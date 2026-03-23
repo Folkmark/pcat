@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosperity Catalyst | Strategic Brand Framework</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Local Brand Font: URW Classico */
+        @font-face { font-family: 'URW Classico'; src: url('fonts/URWClassico-regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'URW Classico'; src: url('fonts/URWClassico-italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+
+        :root {
+            /* Brand Palette */
+            --brand-primary: #821645;
+            --brand-primary-dark: #580E2E;
+            --brand-accent: #FA9E29; 
+            --brand-accent-hover: #E0891F;
+            
+            /* Derived Neutrals */
+            --mineral-white: #FCFBF7; 
+            --blush-ivory: #F6EEE5; 
+            --aubergine-black: #1A0911; 
+            --wine-surface: #2E121E; 
+            --text-muted-dark: #A5929A;
+
+            /* Motion Constants */
+            --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+            
+            /* Fluid Spacing System */
+            --space-xs: clamp(0.75rem, 1.5vw, 1.5rem);
+            --space-sm: clamp(1.5rem, 3vw, 3rem);
+            --space-md: clamp(2.5rem, 5vw, 5rem);
+            --space-lg: clamp(4rem, 8vw, 8rem);
+            --space-xl: clamp(6rem, 12vw, 12rem);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--mineral-white); color: var(--aubergine-black); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        /* Gritty Tactile Grain Overlay */
+        body::after {
+            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 9998; opacity: 0.07; mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Subtle Ambient Lift for White Text */
+        .text-lift { text-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+        .btn, .mockup-card, .logo-box, .photo-caption { text-shadow: none; }
+        .photo-caption { text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+
+        /* --- BOOT LOADER & SECURE GATE --- */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: var(--aubergine-black); z-index: 10000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: transform 1.2s var(--ease-cinematic); transform-origin: top;
+        }
+        .loader-logo { height: 160px; margin-bottom: 2.5rem; opacity: 0.95; transition: transform 1s var(--ease-cinematic); animation: pulseText 2s infinite alternate var(--ease-cinematic); }
+        .loader-logo.shrunk { transform: scale(0.7); margin-bottom: 2rem; animation: none; }
+        
+        .init-sequence { display: flex; flex-direction: column; align-items: center; transition: opacity 0.6s ease; }
+        .loader-text { color: var(--mineral-white); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 500; opacity: 0.6; animation: pulseText 1.5s infinite alternate var(--ease-cinematic); }
+        .loader-bar-container { width: 220px; height: 1px; background: rgba(255,255,255,0.1); margin-top: 1.5rem; overflow: hidden; position: relative; }
+        .loader-bar { width: 100%; height: 100%; background: var(--brand-accent); transform: translateX(-100%); animation: loadProgress 1.5s var(--ease-out-expo) forwards; }
+        
+        .auth-sequence { display: none; opacity: 0; flex-direction: column; align-items: center; transform: translateY(20px); transition: all 0.8s var(--ease-cinematic); }
+        .auth-input-group { position: relative; margin: 1.5rem 0; width: 280px; }
+        .auth-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0.75rem 0; color: var(--mineral-white); font-family: 'Inter', sans-serif; font-size: 1rem; text-align: center; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease; letter-spacing: 0.2em; }
+        .auth-input::placeholder { color: rgba(255,255,255,0.3); font-weight: 300; letter-spacing: 0.1em; }
+        .auth-input:focus { border-bottom-color: var(--brand-accent); box-shadow: 0 1px 0 0 var(--brand-accent); }
+        .auth-error { color: #ff4d4d; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; position: absolute; bottom: -20px; left: 0; width: 100%; text-align: center; opacity: 0; transition: opacity 0.3s ease; }
+        
+        @keyframes pulseText { 0% { opacity: 0.3; } 100% { opacity: 0.9; } }
+        @keyframes loadProgress { 100% { transform: translateX(0); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+        
+        .shake { animation: shake 0.4s var(--ease-cinematic); }
+        .loaded #loader { transform: translateY(-100%); pointer-events: none; transition-delay: 0.4s; }
+
+        /* Typography */
+        h2, h3, h4 { font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+        h1, .brand-font { font-family: 'URW Classico', serif; font-weight: 400; line-height: 1.05; }
+        .brand-font-italic { font-family: 'URW Classico', serif; font-weight: 400; font-style: italic; }
+        
+        h1 { font-size: clamp(4rem, 9vw, 9.5rem); letter-spacing: -0.01em; }
+        h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        p { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; font-weight: 300; max-width: 65ch; }
+        .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: var(--space-xs); display: block; }
+
+        /* Editorial Layout Classes */
+        .core-block h3 { font-family: 'Inter', sans-serif; font-size: clamp(1.1rem, 2vw, 1.3rem); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted-dark); margin-bottom: 1rem; }
+        .editorial-lead { font-family: 'URW Classico', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.1; color: var(--brand-primary); margin-bottom: 2rem; }
+        .editorial-quote { border-left: 2px solid var(--brand-accent); padding-left: 1.5rem; font-style: italic; font-size: 1.15rem; color: var(--text-muted-dark); margin: 2rem 0; line-height: 1.6; }
+        .nasa-spec-rationale { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted-dark); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.08); font-weight: 300; max-width: 75ch; }
+
+        /* Layout */
+        .container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 4rem); }
+        section { padding: var(--space-xl) 0; position: relative; }
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: var(--space-md); }
+        @media(min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+        /* Global Header */
+        .global-header {
+            position: absolute; top: 0; left: 0; width: 100%; padding: var(--space-sm) clamp(1.5rem, 4vw, 4rem);
+            display: flex; justify-content: space-between; align-items: flex-start; z-index: 100;
+        }
+        .global-header .brand-logo { height: 55px; width: auto; }
+        .header-meta { font-weight: 500; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mineral-white); opacity: 0.8; text-align: right; display: flex; gap: 3rem; }
+        .header-meta-col { display: flex; flex-direction: column; gap: 0.25rem; }
+        @media(max-width: 600px) { .header-meta { display: none; } }
+
+        /* Thematic Systems */
+        .theme-white { background: var(--mineral-white); color: var(--aubergine-black); }
+        .theme-offwhite { background: var(--blush-ivory); color: var(--aubergine-black); }
+        .theme-dark { background: var(--aubergine-black); color: var(--mineral-white); }
+        
+        /* Interstitial Chapter Breaks */
+        .chapter-break, .integrated-hero {
+            background: radial-gradient(circle at 50% 0%, #9B1D56 0%, var(--brand-primary) 50%, #560e2d 100%);
+            color: var(--mineral-white); overflow: hidden; position: relative;
+        }
+        .chapter-break { padding: var(--space-xl) 0; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .chapter-break::after { content: ""; position: absolute; top: 0; right: -15vw; width: 40vw; height: 100%; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: left center; opacity: 0.12; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 50%); -webkit-mask-image: linear-gradient(to right, transparent, black 50%); }
+        .chapter-break::before { content: ""; position: absolute; top: 0; left: -15vw; width: 40vw; height: 100%; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: right center; opacity: 0.12; pointer-events: none; mask-image: linear-gradient(to left, transparent, black 50%); -webkit-mask-image: linear-gradient(to left, transparent, black 50%); }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- HERO --- */
+        .integrated-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-xl) clamp(1.5rem, 4vw, 4rem) var(--space-md) clamp(1.5rem, 4vw, 4rem); }
+        @keyframes slowPan { 0% { background-position: 0% 50%; } 100% { background-position: -2% 50%; } }
+        .integrated-hero::after { content: ""; position: absolute; top: 0; right: -10vw; width: 60vw; height: 100%; z-index: 2; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: 0% 50%; pointer-events: none; opacity: 0; transform: translateX(5vw); transition: opacity 2.5s var(--ease-cinematic), transform 2.5s var(--ease-cinematic); mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
+        .loaded .integrated-hero::after { opacity: 0.12; transform: translateX(0); transition-delay: 1.2s; animation: slowPan 40s linear infinite alternate 3s; }
+        
+        .hero-content { z-index: 10; width: 100%; padding-bottom: var(--space-lg); position: relative; }
+        .hero-content h1 { line-height: 0.95; margin: 0; display: flex; flex-direction: column; }
+        .hero-text-mask { overflow: hidden; display: block; padding: 0.2em 0.1em; margin: -0.2em -0.1em; }
+        .hero-text-line { display: block; transform: translateY(110%); transition: transform 1.4s var(--ease-cinematic); }
+
+        .hero-bottom { z-index: 10; display: grid; grid-template-columns: 1fr; gap: var(--space-md); align-items: start; border-top: 1px solid rgba(255,255,255,0.15); padding-top: var(--space-sm); width: 100%; position: relative; }
+        @media(min-width: 1024px) { .hero-bottom { grid-template-columns: 1fr 2fr; gap: var(--space-lg); } }
+        .hero-bottom-left { max-width: 45ch; font-size: 0.95rem; font-weight: 300; opacity: 0.9; line-height: 1.6; }
+        
+        .toc-list { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1rem 3rem; list-style: decimal-leading-zero; font-size: 0.85rem; margin: 0; padding-left: 1.5rem; }
+        @media(min-width: 600px) { .toc-list { grid-template-columns: repeat(2, 1fr); } }
+        .toc-list li { position: relative; font-weight: 400; padding-left: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 0.5rem; }
+        .toc-list li::marker { color: rgba(255,255,255,0.5); font-weight: 300; }
+        .toc-list a { color: var(--mineral-white); text-decoration: none; opacity: 0.85; transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease; display: inline-block; padding: 0.2rem 0; width: 100%; }
+        .toc-list a:hover { opacity: 1; color: var(--brand-accent); transform: translateX(4px); }
+
+        .hero-fade-in { opacity: 0; transform: translateY(20px); transition: opacity 1.4s var(--ease-cinematic), transform 1.4s var(--ease-cinematic); }
+        .loaded .hero-fade-in { opacity: 1; transform: translateY(0); }
+        .loaded .hero-text-mask:nth-child(1) .hero-text-line { transition-delay: 1.0s; transform: translateY(0); }
+        .loaded .hero-text-mask:nth-child(2) .hero-text-line { transition-delay: 1.15s; transform: translateY(0); }
+        .loaded .hero-text-mask:nth-child(3) .hero-text-line { transition-delay: 1.3s; transform: translateY(0); }
+        .loaded .hero-bottom { transition-delay: 1.6s; }
+        .loaded .global-header { transition-delay: 1.8s; }
+
+        /* --- THE 2025 STRATEGIC CONTEXT (DARK SECTION) --- */
+        .context-section { background: radial-gradient(circle at 50% 0%, var(--wine-surface) 0%, var(--aubergine-black) 100%); color: var(--mineral-white); padding: var(--space-xl) 0; }
+        .context-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start; }
+        @media(min-width: 900px) { .context-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } .context-right { border-left: 1px solid rgba(255,255,255,0.15); padding-left: 4rem; } }
+        .context-right p { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-weight: 300; }
+
+        /* --- BRAND CORE STICKY SCROLL --- */
+        .core-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); align-items: start; }
+        @media(min-width: 1024px) { .core-grid { grid-template-columns: 1fr 1.5fr; } }
+        .core-sidebar { position: relative; padding-bottom: var(--space-md); }
+        @media(min-width: 1024px) { .core-sidebar { position: sticky; top: 15vh; padding-right: var(--space-sm); padding-bottom: 0; } }
+        .core-nav { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1.2rem; border-left: 1px solid rgba(0,0,0,0.1); padding-left: 1.5rem; }
+        .core-nav li { font-size: 0.95rem; font-weight: 500; color: var(--text-muted-dark); cursor: pointer; transition: color 0.3s ease, transform 0.3s ease; position: relative; }
+        .core-nav li.active { color: var(--brand-primary); font-weight: 600; }
+        .core-nav li:hover { color: var(--brand-primary-dark); transform: translateX(4px); }
+        .core-nav li.active::before { content: ""; position: absolute; left: -1.5rem; top: 0; height: 100%; width: 2px; background-color: var(--brand-primary); }
+        .core-content { display: flex; flex-direction: column; gap: 20vh; padding-bottom: 5vh; }
+        .core-block { scroll-margin-top: 15vh; position: relative; }
+
+        /* --- DIALOGUE & LEXICON --- */
+        .dialogue-box { padding: clamp(1.5rem, 3vw, 2.5rem); background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.05); border-radius: 2px; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border-top: 3px solid var(--brand-accent); }
+        .lexicon-box { background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.05); padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 2px; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border-top: 3px solid var(--brand-primary); }
+        .lexicon-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media(min-width: 600px) { .lexicon-grid { grid-template-columns: 1fr 1fr; } }
+        .lex-col h5 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        .lex-col.use h5 { color: var(--brand-accent); }
+        .lex-col.avoid h5 { color: var(--brand-primary); }
+        .lex-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+        .lex-list li { font-size: 0.9rem; font-weight: 500; }
+        .lex-col.avoid .lex-list li { text-decoration: line-through; opacity: 0.6; font-weight: 400; }
+
+        /* --- VALUE CHAIN & PERSONAS --- */
+        .value-card, .persona-card {
+            background: var(--mineral-white); padding: var(--space-md) var(--space-sm); border: 1px solid rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; height: 100%; transition: transform 0.4s var(--ease-cinematic), box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02); opacity: 0; transform: translateY(40px) scale(0.98); 
+        }
+        .value-card.active, .persona-card.active { opacity: 1; transform: translateY(0) scale(1); }
+        .value-card:hover, .persona-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        
+        .value-card { border-top: 3px solid var(--brand-primary); gap: 1rem; }
+        .value-card .step { font-family: 'URW Classico', serif; font-size: 2.5rem; color: var(--brand-primary); line-height: 1; }
+        
+        .persona-card { border-top: 3px solid var(--brand-accent); gap: 1.5rem; }
+        .persona-header h4 { font-family: 'URW Classico', serif; font-size: 2rem; color: var(--brand-primary); line-height: 1.1; margin-bottom: 0.5rem; }
+        .persona-desc { font-size: 0.95rem; font-weight: 300; line-height: 1.5; color: var(--text-muted-dark); }
+        .persona-section { margin-top: 1rem; }
+        .persona-section h5 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--aubergine-black); margin-bottom: 0.75rem; font-weight: 600; }
+        .persona-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+        .persona-list li { font-size: 0.85rem; color: var(--text-muted-dark); position: relative; padding-left: 1rem; line-height: 1.4; }
+        .persona-list li::before { content: "—"; position: absolute; left: 0; color: var(--brand-accent); }
+
+        /* --- PHOTOGRAPHY STYLE --- */
+        .visual-style-section { background: radial-gradient(circle at 50% 0%, var(--wine-surface) 0%, var(--aubergine-black) 100%); color: var(--mineral-white); padding: var(--space-xl) 0; }
+        .photo-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-xs); margin-top: var(--space-md); }
+        .photo-item { position: relative; overflow: hidden; border-radius: 2px; background: #000; }
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%) contrast(105%); transition: transform 1.5s var(--ease-cinematic), filter 1s var(--ease-cinematic); }
+        .photo-item:hover img { transform: scale(1.03); filter: grayscale(0%) contrast(100%); }
+        .photo-caption { position: absolute; bottom: 1.5rem; left: 1.5rem; color: white; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 10; }
+        
+        .p-main { grid-column: span 12; height: 50vh; }
+        .p-half-1 { grid-column: span 12; height: 40vh; }
+        .p-half-2 { grid-column: span 12; height: 40vh; }
+        @media(min-width: 900px) { .p-main { height: 75vh; } .p-half-1 { grid-column: span 7; height: 50vh; } .p-half-2 { grid-column: span 5; height: 50vh; } }
+        
+        .reveal-clip { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transition: clip-path 1.6s var(--ease-cinematic), transform 1.6s var(--ease-cinematic); }
+        .reveal-clip.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: var(--space-md); border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* --- DESIGN SYSTEM SPECS --- */
+        .typo-waterfall { margin-top: 2rem; }
+        .typo-row { display: grid; grid-template-columns: 1fr; gap: 1rem; padding: 3rem 0; border-top: 1px solid rgba(0,0,0,0.08); align-items: center; }
+        @media(min-width: 900px) { .typo-row { grid-template-columns: 1.2fr 1fr; gap: 4rem; } }
+        .typo-spec { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-muted-dark); }
+        .spec-pill { display: inline-block; font-family: monospace; background: rgba(0,0,0,0.05); padding: 0.3rem 0.6rem; border-radius: 2px; color: var(--aubergine-black); margin-bottom: 0.5rem; }
+        .spec-details { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1rem; }
+        
+        .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .color-card { aspect-ratio: 1; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; border-radius: 2px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: transform 0.4s ease, box-shadow 0.4s ease; opacity: 0; transform: translateY(40px) scale(0.98); }
+        .color-card.active { opacity: 1; transform: translateY(0) scale(1); }
+        .color-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        .color-card .huge-text { font-family: 'URW Classico', serif; font-size: 4rem; line-height: 1; margin: 0; }
+        .color-card-footer { display: flex; justify-content: space-between; align-items: flex-end; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
+        .color-card-footer div span { display: block; margin-top: 0.25rem; font-family: monospace; font-weight: 400; opacity: 0.7; }
+        .color-card-footer .fg { text-align: right; }
+
+        .pair-1 { background-color: var(--mineral-white); color: var(--brand-primary); }
+        .pair-2 { background-color: var(--aubergine-black); color: var(--mineral-white); border-color: rgba(255,255,255,0.1); }
+        .pair-3 { background-color: var(--brand-primary); color: var(--brand-accent); border-color: transparent; }
+        .pair-4 { background-color: var(--blush-ivory); color: var(--aubergine-black); }
+
+        .ui-showcase { background: var(--mineral-white); border: 1px solid rgba(0,0,0,0.05); padding: clamp(1.5rem, 4vw, 4rem); border-radius: 2px; margin-top: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.03); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2.5rem; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 2px; transition: all 0.4s var(--ease-cinematic); cursor: pointer; text-decoration: none; border: 1px solid transparent; }
+        .btn-solid { background: var(--brand-primary); color: var(--mineral-white); border: 1px solid var(--brand-primary); }
+        .btn-solid:hover { background: var(--brand-primary-dark); border-color: var(--brand-primary-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(88, 14, 46, 0.2); }
+        .btn-solid-accent { background: var(--brand-accent); color: var(--aubergine-black); border: 1px solid var(--brand-accent); }
+        .btn-solid-accent:hover { background: var(--brand-accent-hover); border-color: var(--brand-accent-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(250, 158, 41, 0.2); }
+        .btn-outline { background: transparent; color: var(--mineral-white); border-color: rgba(255,255,255,0.3); }
+        .btn-outline:hover { background: var(--mineral-white); color: var(--aubergine-black); border-color: var(--mineral-white); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        
+        .ui-forms { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 600px; }
+        @media(min-width: 600px) { .ui-forms { grid-template-columns: 1fr 1fr; } }
+        .form-group { display: flex; flex-direction: column; position: relative; }
+        .form-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: var(--text-muted-dark); margin-bottom: 0.5rem; }
+        .form-input { width: 100%; border: none; border-bottom: 1px solid rgba(0,0,0,0.2); background: transparent; padding: 0.75rem 0; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--aubergine-black); transition: border-color 0.3s ease, box-shadow 0.3s ease; border-radius: 0; outline: none; }
+        .form-input::placeholder { color: rgba(0,0,0,0.2); font-weight: 300; }
+        .form-input:focus { border-bottom-color: var(--brand-primary); box-shadow: 0 1px 0 0 var(--brand-primary); }
+        
+        .grid-visualizer { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0.5rem; margin-top: 2rem; height: 120px; }
+        @media(min-width: 600px) { .grid-visualizer { gap: 1rem; } }
+        .grid-col { background: rgba(130, 22, 69, 0.08); border: 1px solid rgba(130, 22, 69, 0.15); border-radius: 2px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.5rem; font-size: 0.7rem; font-family: monospace; color: var(--brand-primary); }
+        .spacing-scale { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+        .space-item { display: flex; align-items: center; gap: 2rem; }
+        .space-block { background: var(--brand-primary); }
+
+        .logo-box { display: flex; align-items: center; justify-content: center; height: 280px; border-radius: 2px; position: relative; overflow: hidden; }
+        .logo-box.dark-bg { background-color: var(--aubergine-black); border: 1px solid rgba(255,255,255,0.1); }
+        .clear-space-box img { position: relative; z-index: 2; }
+        .clear-space-box::before { content: ""; position: absolute; top: 50%; left: 50%; width: 50%; height: 50%; transform: translate(-50%, -50%); border: 1px dashed rgba(0,0,0,0.15); z-index: 1; }
+        .logo-box.dark-bg .clear-space-box::before { border-color: rgba(255,255,255,0.2); }
+
+        /* --- CHAPTER VI: BRAND APPLICATIONS --- */
+        .mockup-showcase { padding: var(--space-xl) 0; background: var(--blush-ivory); }
+        .mockup-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); align-items: center; margin-top: var(--space-md); }
+        @media(min-width: 1024px) { .mockup-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        .mockup-card { transition: transform 0.6s var(--ease-cinematic), box-shadow 0.6s var(--ease-cinematic); cursor: default; opacity: 0; transform: translateY(40px) scale(0.98); }
+        .mockup-card.active { opacity: 1; transform: translateY(0) scale(1); }
+        .mockup-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
+        
+        .mockup-report {
+            background: radial-gradient(circle at top right, var(--brand-primary-dark) 0%, var(--brand-primary) 100%);
+            color: var(--mineral-white); aspect-ratio: 1 / 1.4; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;
+            box-shadow: 20px 30px 50px rgba(21, 8, 14, 0.2), -1px -1px 2px rgba(255,255,255,0.2); border-radius: 2px; position: relative; overflow: hidden;
+        }
+        .mockup-report::after { content: ""; position: absolute; top: 0; right: -10%; width: 70%; height: 100%; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: left center; opacity: 0.15; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
+        .report-top, .report-bottom { z-index: 2; }
+        
+        .mockup-tag {
+            background: var(--mineral-white); color: var(--aubergine-black); aspect-ratio: 1 / 1.3;
+            padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-top: 4px solid var(--brand-accent); border-radius: 2px; position: relative;
+        }
+        .tag-hole { width: 12px; height: 12px; background: var(--blush-ivory); border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1rem; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1); }
+        
+        .mockup-social {
+            aspect-ratio: 1 / 1; position: relative; overflow: hidden; border-radius: 2px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
+        }
+        .mockup-social img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: contrast(105%); }
+        .mockup-social::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(21,8,14,0.9) 0%, rgba(21,8,14,0) 60%); z-index: 2; }
+        .social-content { position: relative; z-index: 3; color: var(--mineral-white); }
+
+        /* --- THE VANGUARD (CONCLUSION) --- */
+        .conclusion-section {
+            background-color: var(--aubergine-black); color: var(--mineral-white); padding: var(--space-xl) 0; text-align: center; display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* --- PROFESSIONAL FOOTER --- */
+        .professional-footer { background: var(--aubergine-black); color: var(--mineral-white); padding: 0 0 var(--space-md) 0; border-top: none; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--space-lg); }
+        @media(min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+        .footer-col h5 { font-family: 'URW Classico', serif; font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--brand-primary); }
+        .footer-meta { font-size: 0.85rem; font-weight: 300; opacity: 0.7; line-height: 1.6; }
+        .footer-meta span { display: block; margin-bottom: 0.5rem; color: var(--brand-accent); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+        .footer-bottom { margin-top: var(--space-lg); padding-top: var(--space-sm); border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; justify-content: space-between; font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media(min-width: 900px) { .footer-bottom { flex-direction: row; align-items: center; } }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div id="init-sequence" class="init-sequence">
+            <img src="assets/PCAT White.svg" alt="PCAT" class="loader-logo" id="loader-logo">
+            <div class="loader-text" id="loader-text">Initializing Folkmark Strategy Engine</div>
+            <div class="loader-bar-container" id="loader-bar"><div class="loader-bar"></div></div>
+        </div>
+        
+        <div id="auth-sequence" class="auth-sequence">
+            <span class="label" style="color: var(--brand-accent); letter-spacing: 0.2em;">Secured Artifact</span>
+            <div class="auth-input-group">
+                <input type="password" id="auth-input" class="auth-input" placeholder="Enter Access Key" autocomplete="off">
+                <div id="auth-error" class="auth-error">Invalid Key</div>
+            </div>
+            <button id="auth-btn" class="btn btn-outline" style="margin-top: 1rem;">Unlock System</button>
+        </div>
+    </div>
+
+    <header class="global-header hero-fade-in">
+        <img src="assets/PCAT White.svg" alt="Prosperity Catalyst Logo" class="brand-logo">
+        <div class="header-meta">
+            <div class="header-meta-col">
+                <span style="color: var(--brand-accent);">Document Status</span>
+                <span>V.1.0 — Active</span>
+            </div>
+            <div class="header-meta-col">
+                <span style="color: var(--brand-accent);">Strategic Partner</span>
+                <span>Folkmark</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="integrated-hero text-lift">
+        <div class="hero-content">
+            <h1>
+                <span class="hero-text-mask"><span class="hero-text-line">Brand Strategy,</span></span>
+                <span class="hero-text-mask"><span class="hero-text-line">Identity & Messaging</span></span>
+                <span class="hero-text-mask"><span class="hero-text-line">Architecture.</span></span>
+            </h1>
+        </div>
+        
+        <div class="hero-bottom hero-fade-in">
+            <div class="hero-bottom-left">
+                An executive framework to give Prosperity Catalyst a clearer, stronger, and more trustworthy public voice—equipping leadership to coordinate storytelling and secure institutional trust.
+            </div>
+            
+            <ol class="toc-list">
+                <li><a href="#chapter-foundation">The Strategic Foundation</a></li>
+                <li><a href="#chapter-messaging">Messaging Architecture</a></li>
+                <li><a href="#chapter-audiences">Audience Personas</a></li>
+                <li><a href="#chapter-visual">Visual Style</a></li>
+                <li><a href="#chapter-system">The Design System</a></li>
+                <li><a href="#chapter-applications">Brand Applications</a></li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="context-section text-lift">
+        <div class="container">
+            <div class="context-grid">
+                <div class="reveal" style="padding-bottom: 2rem;">
+                    <span class="label" style="color: var(--brand-accent);">The Core Idea</span>
+                    <h2 class="brand-font" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; color: var(--mineral-white);">Build futures through women-led enterprise.</h2>
+                    <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 300;">This is the center of gravity. Everything else in this system should reinforce, clarify, or demonstrate this idea—never compete with it.</p>
+                </div>
+                <div class="reveal context-right">
+                    <span class="label" style="color: var(--brand-accent);">The 2025 Reality</span>
+                    <p>As a new presidential administration takes office, the global development sector faces anticipated volatility and contracting institutional capital. Simultaneously, Prosperity Catalyst requires urgent reinvestment in Fundraising & Development, alongside the critical expansion of our export, import, and retail supply chains.</p>
+                    <p>This brand refresh is the strategic foundation for that pivot. It equips leadership to project undeniable stability, defend existing funding, and confidently open new market channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chapter-foundation" class="chapter-break text-lift">
+        <div class="mosaic-parallax mosaic-left"></div>
+        <div class="mosaic-parallax mosaic-right"></div>
+        <div class="container reveal">
+            <span class="label" style="color: var(--brand-accent);">Chapter I</span>
+            <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">The Foundation</h2>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">Articulating the core principles of dignity, stewardship, and enterprise.</p>
+        </div>
+    </section>
+
+    <section class="theme-offwhite">
+        <div class="container core-grid">
+            <div class="core-sidebar reveal">
+                <span class="label">Brand Heart</span>
+                <h2 class="brand-font" style="font-size: 3.5rem;">The Center.</h2>
+                <ul class="core-nav" id="nav-heart">
+                    <li data-target="block-purpose" class="active">01. Purpose & Vision</li>
+                    <li data-target="block-positioning">02. Strategic Positioning</li>
+                    <li data-target="block-value">03. Value Proposition</li>
+                </ul>
+            </div>
+
+            <div class="core-content">
+                <div id="block-purpose" class="core-block reveal observer-block" data-nav="nav-heart">
+                    <h3>01. Purpose & Values</h3>
+                    <p class="editorial-lead">To expand economic possibility for women in places where opportunity has been constrained by instability, exclusion, and lack of access.</p>
+                    <p>We envision a world where women in fragile environments are recognized as builders of households, markets, and long-term resilience.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem;">
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
+                            <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Dignity</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Women are seen and supported as builders—never reduced to symbols of need.</p>
+                        </div>
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
+                            <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Practicality</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">The work is grounded in real pathways: skills, business support, investment, and opportunity.</p>
+                        </div>
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
+                            <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Proximity</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">We stay close to real people, real constraints, and real economic conditions.</p>
+                        </div>
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
+                            <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Stewardship & Endurance</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Support is handled with care. The goal is lasting capacity and locally rooted strength.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="block-positioning" class="core-block reveal observer-block" data-nav="nav-heart">
+                    <h3>02. The Category</h3>
+                    <p class="editorial-lead">Women-led enterprise in fragile contexts.</p>
+                    <p>This is our lane. It avoids vague "empowerment" language, overly technical development jargon, and imported startup metaphors. It allows the organization to speak clearly about training, mentorship, income, market connection, and long-term resilience.</p>
+                    
+                    <p class="editorial-quote">Prosperity Catalyst is a women’s enterprise organization working in Haiti and Iraq. It pairs practical training with one-on-one mentorship, early investment, and community networks to help women build income, confidence, and longer-term stability.</p>
+                    
+                    <p>The work does not end at training. It is designed to support real economic participation.</p>
+                </div>
+
+                <div id="block-value" class="core-block reveal observer-block" data-nav="nav-heart">
+                    <h3>03. The Value Proposition</h3>
+                    <p class="editorial-lead">Prosperity Catalyst creates practical pathways for women in Haiti and Iraq to build income, stability, and independence.</p>
+                    <p>Through skills training, mentorship, early investment, and networks of support, we help women move from limited opportunity toward sustained economic participation. This is not abstract impact. It is grounded, human, and ongoing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chapter-messaging" class="chapter-break text-lift">
+        <div class="mosaic-parallax mosaic-left"></div>
+        <div class="mosaic-parallax mosaic-right"></div>
+        <div class="container reveal">
+            <span class="label" style="color: var(--brand-accent);">Chapter II</span>
+            <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">Messaging Architecture</h2>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">How we speak, what we highlight, and the language we avoid.</p>
+        </div>
+    </section>
+
+    <section class="theme-white">
+        <div class="container core-grid">
+            <div class="core-sidebar reveal">
+                <span class="label">Verbal Identity</span>
+                <h2 class="brand-font" style="font-size: 3.5rem;">The Voice.</h2>
+                <ul class="core-nav" id="nav-messaging">
+                    <li data-target="block-voice" class="active">01. Tone & Style</li>
+                    <li data-target="block-pillars">02. Messaging Pillars</li>
+                    <li data-target="block-stories">03. Brand Stories</li>
+                </ul>
+            </div>
+
+            <div class="core-content">
+                <div id="block-voice" class="core-block reveal observer-block" data-nav="nav-messaging">
+                    <h3>01. Warm. Clear. Grounded.</h3>
+                    <p class="editorial-lead">Our tone is human, not sentimental.</p>
+                    <p>We show care without manipulation. We are economically literate, talking about work and income without turning people into abstractions. We are confident, never overclaiming.</p>
+                    
+                    <div class="lexicon-box">
+                        <div class="lexicon-grid">
+                            <div class="lex-col use">
+                                <h5>Use these concepts</h5>
+                                <ul class="lex-list">
+                                    <li>Women-led enterprise</li>
+                                    <li>Economic futures</li>
+                                    <li>Skills, mentorship, support</li>
+                                    <li>Income and stability</li>
+                                    <li>Networks and connection</li>
+                                    <li>Dignity & Resilience</li>
+                                </ul>
+                            </div>
+                            <div class="lex-col avoid">
+                                <h5>Avoid these habits</h5>
+                                <ul class="lex-list">
+                                    <li>"Empowerment" as a catch-all</li>
+                                    <li>"Beneficiaries" or "Vulnerable" as default</li>
+                                    <li>ROI-heavy financialized framing</li>
+                                    <li>Startup metaphors (venture studio)</li>
+                                    <li>Pity-driven storytelling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="block-pillars" class="core-block reveal observer-block" data-nav="nav-messaging">
+                    <h3>02. The Core Pillars</h3>
+                    <p class="editorial-lead">These pillars ensure every piece of communication reinforces our central idea.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 3rem;">
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem;">
+                            <h5 style="color: var(--brand-primary); font-size: 1.2rem; font-family: 'URW Classico', serif; margin-bottom: 0.5rem;">1. Women build more than income</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">When women gain the means to earn, the effects extend beyond the individual. Households stabilize. Decisions shift. Standing changes. This is not symbolic—it is practical and visible.</p>
+                        </div>
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem;">
+                            <h5 style="color: var(--brand-primary); font-size: 1.2rem; font-family: 'URW Classico', serif; margin-bottom: 0.5rem;">2. Opportunity must be practical</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Change starts with usable pathways. Skills that can be applied. Training that connects to income. Support that makes action possible. The outcome is participation, not mere completion.</p>
+                        </div>
+                        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem;">
+                            <h5 style="color: var(--brand-primary); font-size: 1.2rem; font-family: 'URW Classico', serif; margin-bottom: 0.5rem;">3. Enterprise grows through networks</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Effort alone is not enough. Women need connection, access, visibility, and support systems. This is how enterprise becomes durable. We hold both economic and human realities together.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="block-stories" class="core-block reveal observer-block" data-nav="nav-messaging">
+                    <h3>03. How the System Comes to Life</h3>
+                    <p class="editorial-lead">Use these stories consistently to make the pillars real.</p>
+                    <ul style="margin-top: 2rem; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Enterprise story:</strong> A woman builds income through skill, support, and effort.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Household story:</strong> That income changes what is possible at home.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Network story:</strong> Relationships and support structures make progress possible.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Market story:</strong> Products and demand turn work into livelihood.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Long-view story:</strong> The goal is continuity, not one moment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chapter-audiences" class="chapter-break text-lift">
+        <div class="mosaic-parallax mosaic-left"></div>
+        <div class="mosaic-parallax mosaic-right"></div>
+        <div class="container reveal">
+            <span class="label" style="color: var(--brand-accent);">Chapter III</span>
+            <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">Audience Architecture</h2>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">Who we speak to, and what they need to hear.</p>
+        </div>
+    </section>
+
+    <section class="theme-offwhite">
+        <div class="container">
+            <div class="reveal" style="max-width: 65ch; margin-bottom: var(--space-md);">
+                <span class="label">Relational Dialogue</span>
+                <h2 class="brand-font" style="font-size: clamp(2.5rem, 4vw, 3rem); line-height: 1.1; color: var(--brand-primary); margin-bottom: 1.5rem;">To build a durable platform for partnership, the brand must speak with precision to the individuals capable of moving introductions, credibility, and opportunity.</h2>
+                <p style="color: var(--text-muted-dark);">These personas dictate our tone, our pacing, and our proof points.</p>
+            </div>
+            <div class="grid-3 reveal-stagger">
+                <div class="persona-card stagger-item">
+                    <div class="persona-header">
+                        <h4>The Trusted Connector</h4>
+                        <p class="persona-desc">A well-networked supporter who can move introductions, credibility, and opportunity across civic, faith, diaspora, and professional circles.</p>
+                    </div>
+                    <div class="persona-section">
+                        <h5>What the brand must signal</h5>
+                        <ul class="persona-list">
+                            <li>This organization is credible</li>
+                            <li>The work is human and dignified</li>
+                            <li>The story is portable</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="persona-card stagger-item">
+                    <div class="persona-header">
+                        <h4>The Major Supporter</h4>
+                        <p class="persona-desc">A high-capacity donor, family office principal, or senior patron looking for organizations that combine human seriousness with practical leverage.</p>
+                    </div>
+                    <div class="persona-section">
+                        <h5>What the brand must signal</h5>
+                        <ul class="persona-list">
+                            <li>PCAT is not improvising</li>
+                            <li>We understand fragility without dramatizing it</li>
+                            <li>The brand is a strong platform for trust</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="persona-card stagger-item">
+                    <div class="persona-header">
+                        <h4>The Strategic Ally</h4>
+                        <p class="persona-desc">A partner, buyer, institutional contact, or informed mid-level supporter who can strengthen the organization’s ecosystem over time.</p>
+                    </div>
+                    <div class="persona-section">
+                        <h5>What the brand must signal</h5>
+                        <ul class="persona-list">
+                            <li>PCAT has a coherent public voice</li>
+                            <li>The work is grounded in real economic participation</li>
+                            <li>This is a trust-and-opportunity story</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chapter-visual" class="chapter-break text-lift">
+        <div class="mosaic-parallax mosaic-left"></div>
+        <div class="mosaic-parallax mosaic-right"></div>
+        <div class="container reveal">
+            <span class="label" style="color: var(--brand-accent);">Chapter IV</span>
+            <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">Visual Style</h2>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">Imagery and identity assets designed to honor dignity and command respect.</p>
+        </div>
+    </section>
+
+    <section class="visual-style-section" style="background: radial-gradient(circle at 50% 0%, var(--wine-surface) 0%, var(--aubergine-black) 100%); color: var(--mineral-white); padding: var(--space-xl) 0;">
+        <div class="container">
+            <div class="reveal">
+                <span class="label" style="color: var(--brand-accent);">01. Imagery Guidance</span>
+                <h2 class="brand-font text-lift" style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1.5rem; color: var(--mineral-white);">Dignity & Focus.</h2>
+                <p style="color: rgba(255,255,255,0.8); max-width: 60ch; font-weight: 300;">Our imagery should reflect capability, pride, focus, and real economic participation. We present women as makers, operators, leaders, and partners in enterprise. The goal of our photography is never pity, but profound respect and belief.</p>
+            </div>
+            
+            <div class="photo-grid reveal-stagger">
+                <div class="photo-item p-main stagger-item reveal-clip">
+                    <img src="assets/photos/WaxPour.webp" alt="Wax Pouring Haiti">
+                    <div class="photo-caption">Operational Focus</div>
+                </div>
+                <div class="photo-item p-half-1 stagger-item reveal-clip">
+                    <img src="assets/photos/Murielle.jpeg" alt="Murielle">
+                    <div class="photo-caption">Enterprise & Leadership</div>
+                </div>
+                <div class="photo-item p-half-2 stagger-item reveal-clip">
+                    <img src="assets/photos/Baharka-Camp-Crocheter.png" alt="Baharka Crocheter">
+                    <div class="photo-caption">Artisan Skill</div>
+                </div>
+            </div>
+
+            <div class="reveal" style="margin-top: 8rem;">
+                <h3 class="brand-font" style="margin-bottom: 1rem; color: var(--brand-accent);">Voices of Agency</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-weight: 300;">When utilizing video, select cuts where the subject discusses their craft, their business networks, and their personal command of the work. Avoid footage that isolates or diminishes the speaker.</p>
+                <div class="video-container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/7vstPGdr3Lc?start=135&rel=0&modestbranding=1" title="Prosperity Catalyst Testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chapter-system" class="chapter-break text-lift">
+        <div class="mosaic-parallax mosaic-left"></div>
+        <div class="mosaic-parallax mosaic-right"></div>
+        <div class="container reveal">
+            <span class="label" style="color: var(--brand-accent);">Chapter V</span>
+            <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">The Design System</h2>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">The mathematical constraints and UI architectures required to scale the brand.</p>
+        </div>
+    </section>
+
+    <section class="theme-white">
+        <div class="container core-grid">
+            <div class="core-sidebar reveal">
+                <span class="label">System Architecture</span>
+                <h2 class="brand-font" style="font-size: 3.5rem;">The Specs.</h2>
+                <ul class="core-nav" id="nav-system">
+                    <li data-target="ds-typo" class="active">01. Typographic Waterfall</li>
+                    <li data-target="ds-color">02. Chromatic Scale</li>
+                    <li data-target="ds-ui">03. Interface Standards</li>
+                    <li data-target="ds-space">04. Spatial Coordinates</li>
+                    <li data-target="ds-logo">05. Identity Clear Space</li>
+                </ul>
+            </div>
+
+            <div class="core-content">
+                
+                <div id="ds-typo" class="core-block reveal observer-block" data-nav="nav-system">
+                    <h3>01. Typographic Standards</h3>
+                    <p class="editorial-lead">Typography is the primary vehicle for institutional authority.</p>
+                    <p class="nasa-spec-rationale">The system employs a dual-typeface strategy to resolve the tension between heritage and modern utility. URW Classico operates as the display face, signaling stewardship and gravitas. Inter operates as the utility face, optimizing legibility and information density. Never alter tracking or leading outside defined parameters.</p>
+                    
+                    <div class="typo-waterfall">
+                        <div class="typo-row">
+                            <div style="padding-bottom: 1rem;"><h1 style="margin: 0; line-height: 1;">Display One</h1></div>
+                            <div class="typo-spec">
+                                <span class="spec-pill">URW Classico Regular</span>
+                                <div class="spec-details">
+                                    <div><strong>Size:</strong> clamp(4rem, 9vw, 9.5rem)</div>
+                                    <div><strong>Leading:</strong> 105%</div>
+                                    <div><strong>Tracking:</strong> -0.01em</div>
+                                    <div><strong>Use:</strong> Hero moments, Chapter Breaks</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="typo-row">
+                            <div style="padding-bottom: 1rem;"><h2 style="margin: 0; line-height: 1.1;">Section Header</h2></div>
+                            <div class="typo-spec">
+                                <span class="spec-pill">Inter Medium (500)</span>
+                                <div class="spec-details">
+                                    <div><strong>Size:</strong> clamp(2.5rem, 5vw, 4.5rem)</div>
+                                    <div><strong>Leading:</strong> 110%</div>
+                                    <div><strong>Tracking:</strong> -0.02em</div>
+                                    <div><strong>Use:</strong> Primary page content anchors</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="typo-row">
+                            <div style="padding-bottom: 1rem;"><h3 style="margin: 0; line-height: 1.2; font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(1.1rem, 2vw, 1.3rem);">Block Header</h3></div>
+                            <div class="typo-spec">
+                                <span class="spec-pill">Inter SemiBold (600)</span>
+                                <div class="spec-details">
+                                    <div><strong>Size:</strong> clamp(1.1rem, 2vw, 1.3rem)</div>
+                                    <div><strong>Leading:</strong> 120%</div>
+                                    <div><strong>Tracking:</strong> 0.05em</div>
+                                    <div><strong>Use:</strong> Supporting paragraphs, value cards</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="typo-row">
+                            <div style="padding-bottom: 1rem;"><p style="margin: 0;"><strong>Narrative Body.</strong> Our supporters are not just donors; they are connectors, advocates, and long-term allies.</p></div>
+                            <div class="typo-spec">
+                                <span class="spec-pill">Inter Light (300)</span>
+                                <div class="spec-details">
+                                    <div><strong>Size:</strong> clamp(1rem, 1.2vw, 1.125rem)</div>
+                                    <div><strong>Leading:</strong> 160%</div>
+                                    <div><strong>Tracking:</strong> Normal</div>
+                                    <div><strong>Use:</strong> All long-form reading</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ds-color" class="core-block reveal observer-block" data-nav="nav-system">
+                    <h3>02. Chromatic Architecture</h3>
+                    <p class="editorial-lead">Color dictates mood and directs hierarchy.</p>
+                    <p class="nasa-spec-rationale">The chromatic system rejects pure digital values (e.g., #000000, #FFFFFF) in favor of saturated, physical tones. Mineral White and Aubergine Black simulate the optical weight of premium print material, establishing a tactile, lived-in presence. Strict contrast pairings ensure accessibility without sacrificing the brand's quiet warmth.</p>
+                    
+                    <div class="color-grid reveal-stagger">
+                        <div class="color-card stagger-item pair-1">
+                            <p class="huge-text">Aa</p>
+                            <div class="color-card-footer">
+                                <div>Background<span>#FCFBF7</span></div>
+                                <div class="fg">Foreground<span>#821645</span></div>
+                            </div>
+                        </div>
+                        <div class="color-card stagger-item pair-2">
+                            <p class="huge-text">Aa</p>
+                            <div class="color-card-footer">
+                                <div>Background<span>#1A0911</span></div>
+                                <div class="fg">Foreground<span>#FCFBF7</span></div>
+                            </div>
+                        </div>
+                        <div class="color-card stagger-item pair-3">
+                            <p class="huge-text">Aa</p>
+                            <div class="color-card-footer">
+                                <div>Background<span>#821645</span></div>
+                                <div class="fg">Foreground<span>#FA9E29</span></div>
+                            </div>
+                        </div>
+                        <div class="color-card stagger-item pair-4">
+                            <p class="huge-text">Aa</p>
+                            <div class="color-card-footer">
+                                <div>Background<span>#F6EEE5</span></div>
+                                <div class="fg">Foreground<span>#1A0911</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ds-ui" class="core-block reveal observer-block" data-nav="nav-system">
+                    <h3>03. Component Anatomy</h3>
+                    <p class="editorial-lead">Digital interfaces must not obfuscate intent.</p>
+                    <p class="nasa-spec-rationale">Digital components are constructed using a subtractive methodology. Containers are implied through spatial proximity rather than heavy borders. Button architecture relies on physical drop-shadows mapped to the button's specific hue, activating only on user interaction to signify dimensional depth and operational readiness.</p>
+                    
+                    <div class="ui-showcase">
+                        <div class="ui-group">
+                            <span class="label">Action Architecture</span>
+                            <div class="ui-buttons">
+                                <a class="btn btn-solid">Primary Action</a>
+                                <a class="btn btn-solid-accent">Support Growth</a>
+                                <a class="btn btn-outline">Learn More</a>
+                            </div>
+                        </div>
+
+                        <div class="ui-group" style="margin-top: 4rem;">
+                            <span class="label">Form Architecture</span>
+                            <div class="ui-forms">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-input" placeholder="e.g. Jane Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-input" placeholder="jane@example.com">
+                                </div>
+                                <div class="form-group" style="grid-column: 1 / -1;">
+                                    <label class="form-label">Inquiry / Partnership Focus</label>
+                                    <input type="text" class="form-input" placeholder="How can we partner to expand networks?">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ds-space" class="core-block reveal observer-block" data-nav="nav-system">
+                    <h3>04. Spatial Coordinate System</h3>
+                    <p class="editorial-lead">A brand operating in fragile global regions must project stability.</p>
+                    <p class="nasa-spec-rationale">Consistency is maintained through a rigid mathematical coordinate system. The layout is anchored by a maximum width of 1600px. The 12-column grid dictates horizontal alignment, while vertical rhythm is governed by a fluid clamp-based scale. This ensures the structural integrity of the layout remains absolute across all viewport permutations.</p>
+                    
+                    <div class="grid-visualizer">
+                        <div class="grid-col">1</div><div class="grid-col">2</div><div class="grid-col">3</div><div class="grid-col">4</div>
+                        <div class="grid-col">5</div><div class="grid-col">6</div><div class="grid-col">7</div><div class="grid-col">8</div>
+                        <div class="grid-col">9</div><div class="grid-col">10</div><div class="grid-col">11</div><div class="grid-col">12</div>
+                    </div>
+                    
+                    <div class="spacing-scale">
+                        <div class="space-item"><div class="space-block" style="width: 20px; height: 20px;"></div><span class="spec-meta"><span>--space-xs</span></span></div>
+                        <div class="space-item"><div class="space-block" style="width: 40px; height: 40px;"></div><span class="spec-meta"><span>--space-sm</span></span></div>
+                        <div class="space-item"><div class="space-block" style="width: 80px; height: 80px;"></div><span class="spec-meta"><span>--space-md</span></span></div>
+                    </div>
+                </div>
+
+                <div id="ds-logo" class="core-block reveal observer-block" data-nav="nav-system">
+                    <h3>05. Identity Clear Space</h3>
+                    <p class="editorial-lead">The immutable seal of Prosperity Catalyst.</p>
+                    <p class="nasa-spec-rationale">The identity mark must remain isolated within a strictly defined clear space, free from typographic or graphic interference. The primary full-color mark is anchored on Mineral White; the secondary whiteout mark is reserved exclusively for Aubergine Black or photographic overlays with sufficient contrast.</p>
+                    
+                    <div class="grid-2" style="margin-top: 3rem;">
+                        <div>
+                            <div class="logo-box clear-space-box" style="background: var(--mineral-white); border: 1px solid rgba(0,0,0,0.05); margin-bottom: 1rem;">
+                                <img src="assets/ProsperityCatalyst_logo-horizontal_format-1500w.png" alt="PCAT Full Color" style="height: auto; max-height: 50px; max-width: 80%;">
+                            </div>
+                            <span class="label" style="font-size: 0.65rem;">Primary (Full Color)</span>
+                        </div>
+                        <div>
+                            <div class="logo-box clear-space-box" style="background-color: var(--aubergine-black); border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem;">
+                                <img src="assets/PCAT White.svg" alt="PCAT White" style="height: 35px;">
+                            </div>
+                            <span class="label" style="font-size: 0.65rem;">Secondary (Whiteout)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="chapter-applications" class="chapter-break text-lift">
+        <div class="mosaic-parallax mosaic-left"></div>
+        <div class="mosaic-parallax mosaic-right"></div>
+        <div class="container reveal">
+            <span class="label" style="color: var(--brand-accent);">Chapter VI</span>
+            <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">Brand Applications</h2>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">Demonstrating the system across physical, retail, and digital environments.</p>
+        </div>
+    </section>
+
+    <section class="mockup-showcase">
+        <div class="container">
+            <div class="reveal">
+                <span class="label">In Situ</span>
+                <h2>The System in Action.</h2>
+            </div>
+            
+            <div class="mockup-grid reveal-stagger">
+                <div class="mockup-card mockup-report stagger-item">
+                    <div class="report-top">
+                        <img src="assets/PCAT White.svg" alt="Logo" style="height: 25px; margin-bottom: 4rem;">
+                        <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; margin-bottom: 0.5rem;">Annual Briefing</p>
+                        <h3 class="brand-font" style="font-size: 2.5rem; line-height: 1;">Enterprise<br>& Resilience</h3>
+                    </div>
+                    <div class="report-bottom">
+                        <p style="font-size: 0.8rem; font-weight: 300; opacity: 0.8;">Prosperity Catalyst • 2026<br>Prepared for Major Supporters</p>
+                    </div>
+                </div>
+
+                <div class="mockup-card mockup-tag stagger-item">
+                    <div class="tag-hole"></div>
+                    <img src="assets/ProsperityCatalyst_logo-horizontal_format-1500w.png" alt="Logo" style="height: 25px; margin: 1rem 0;">
+                    <div>
+                        <h3 class="brand-font" style="font-size: 2rem; color: var(--brand-primary); margin-bottom: 0.5rem;">Haitian Vetiver</h3>
+                        <p style="font-size: 0.8rem; color: var(--text-muted-dark);">Hand-poured by the artisan women of Port-au-Prince.</p>
+                    </div>
+                    <div style="border-top: 1px solid rgba(0,0,0,0.1); width: 100%; padding-top: 1rem;">
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--aubergine-black); font-weight: 600;">100% Traceable Enterprise</p>
+                    </div>
+                </div>
+
+                <div class="mockup-card mockup-social stagger-item">
+                    <img src="assets/photos/Murielle.jpeg" alt="Background">
+                    <div class="social-content">
+                        <span class="label" style="color: var(--brand-accent); font-size: 0.6rem;">Field Update</span>
+                        <h3 class="brand-font" style="font-size: 1.8rem; line-height: 1.1; margin-bottom: 0.5rem;">Skills to Income.</h3>
+                        <p style="font-size: 0.8rem; font-weight: 300; opacity: 0.9; line-height: 1.4;">A woman builds her enterprise through practical training and local networks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chapter-conclusion" class="chapter-break text-lift" style="padding-bottom: var(--space-lg);">
+        <div class="mosaic-parallax mosaic-left"></div>
+        <div class="mosaic-parallax mosaic-right"></div>
+        <div class="container reveal">
+            <span class="label" style="color: var(--brand-accent);">The Vanguard</span>
+            <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">A Living System</h2>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 50ch; text-shadow: none; line-height: 1.6;">
+                This framework is not a static rulebook; it is a strategic instrument. It is designed to be wielded by every executive, partner, and advocate of Prosperity Catalyst. As we move into a shifting global landscape, our clarity is our greatest asset. Use this voice to command rooms. Use this architecture to project undeniable capability. The women at the center of our work are building the future—our brand must possess the strength to match them.
+            </p>
+            <div style="margin-top: 3rem;">
+                <a href="#loader" class="btn btn-outline" style="border-color: var(--brand-accent); color: var(--mineral-white);">Return to Top</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="professional-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5 class="brand-font">Prosperity Catalyst</h5>
+                    <p class="footer-meta" style="max-width: 30ch;">Helping women in Haiti and Iraq build economic futures through skills, investment, and networks of support.</p>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-meta">
+                        <span>Locations</span>
+                        Beverly, MA<br>Port-au-Prince, Haiti<br>Erbil, Iraq
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-meta">
+                        <span>System Architecture</span>
+                        Strategy & Design by Folkmark<br>Version 1.0 — Active
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Prosperity Catalyst. All Rights Reserved.</div>
+                <div>Strategic Brand Framework</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sequence Handling
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('init-sequence').style.display = 'none';
+                
+                const authSeq = document.getElementById('auth-sequence');
+                authSeq.style.display = 'flex';
+                void authSeq.offsetWidth; // trigger reflow
+                authSeq.style.opacity = '1';
+                authSeq.style.transform = 'translateY(0)';
+                
+                document.getElementById('loader-logo').classList.add('shrunk');
+            }, 1600);
+        });
+
+        // Auth Logic
+        const authInput = document.getElementById('auth-input');
+        const authBtn = document.getElementById('auth-btn');
+        const authError = document.getElementById('auth-error');
+
+        function unlockSystem() {
+            if(authInput.value.toLowerCase() === 'augmented') {
+                authError.style.opacity = '0';
+                document.body.classList.add('loaded');
+            } else {
+                authInput.classList.add('shake');
+                authError.style.opacity = '1';
+                setTimeout(() => authInput.classList.remove('shake'), 400);
+            }
+        }
+
+        authBtn.addEventListener('click', unlockSystem);
+        authInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') unlockSystem();
+        });
+
+        // Parallax Mosaics
+        const parallaxElements = document.querySelectorAll('.mosaic-parallax');
+        window.addEventListener('scroll', () => {
+            parallaxElements.forEach(el => {
+                const speed = 0.15;
+                const rect = el.parentElement.getBoundingClientRect();
+                if(rect.top < window.innerHeight && rect.bottom > 0) {
+                    const yPos = (rect.top - window.innerHeight / 2) * speed;
+                    el.style.transform = `translateY(${yPos}px)`;
+                }
+            });
+        });
+
+        // Cinematic Stagger Reveal
+        const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('reveal-stagger')) {
+                        const items = entry.target.querySelectorAll('.stagger-item');
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('active');
+                            }, index * 150);
+                        });
+                    } else {
+                        entry.target.classList.add('active');
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+        
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealOnScroll.observe(el));
+
+        // Generic Sticky Scroll Spy Function
+        function setupScrollSpy(navId) {
+            const navItems = document.querySelectorAll(`#${navId} li`);
+            const targets = Array.from(navItems).map(item => document.getElementById(item.getAttribute('data-target')));
+            
+            const spyOptions = { root: null, rootMargin: "-20% 0px -70% 0px", threshold: 0 };
+            const scrollSpy = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navItems.forEach(nav => nav.classList.remove('active'));
+                        const activeNav = document.querySelector(`#${navId} li[data-target="${id}"]`);
+                        if(activeNav) activeNav.classList.add('active');
+                    }
+                });
+            }, spyOptions);
+            
+            targets.forEach(block => {
+                if(block) scrollSpy.observe(block);
+            });
+        }
+
+        // Initialize Spies
+        setupScrollSpy('nav-heart');
+        setupScrollSpy('nav-messaging');
+        setupScrollSpy('nav-system');
+
+    </script>
+</body>
+</html>
