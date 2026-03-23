@@ -11,8 +11,8 @@
     
     <style>
         /* Local Brand Font: URW Classico */
-        @font-face { font-family: 'URW Classico'; src: url('fonts/URWClassico-regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
-        @font-face { font-family: 'URW Classico'; src: url('fonts/URWClassico-italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+        @font-face { font-family: 'URW Classico'; src: url('Fonts/URWClassico-regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'URW Classico'; src: url('Fonts/URWClassico-italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
 
         :root {
             /* Brand Palette */
@@ -129,8 +129,8 @@
             color: var(--mineral-white); overflow: hidden; position: relative;
         }
         .chapter-break { padding: var(--space-xl) 0; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .chapter-break::after { content: ""; position: absolute; top: 0; right: -15vw; width: 40vw; height: 100%; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: left center; opacity: 0.12; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 50%); -webkit-mask-image: linear-gradient(to right, transparent, black 50%); }
-        .chapter-break::before { content: ""; position: absolute; top: 0; left: -15vw; width: 40vw; height: 100%; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: right center; opacity: 0.12; pointer-events: none; mask-image: linear-gradient(to left, transparent, black 50%); -webkit-mask-image: linear-gradient(to left, transparent, black 50%); }
+        .chapter-break::after { content: ""; position: absolute; top: 0; right: -15vw; width: 40vw; height: 100%; background-image: url('Assets/PCAT Mosaic.svg'); background-size: cover; background-position: left center; opacity: 0.12; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 50%); -webkit-mask-image: linear-gradient(to right, transparent, black 50%); }
+        .chapter-break::before { content: ""; position: absolute; top: 0; left: -15vw; width: 40vw; height: 100%; background-image: url('Assets/PCAT Mosaic.svg'); background-size: cover; background-position: right center; opacity: 0.12; pointer-events: none; mask-image: linear-gradient(to left, transparent, black 50%); -webkit-mask-image: linear-gradient(to left, transparent, black 50%); }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -138,7 +138,7 @@
         /* --- HERO --- */
         .integrated-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-xl) clamp(1.5rem, 4vw, 4rem) var(--space-md) clamp(1.5rem, 4vw, 4rem); }
         @keyframes slowPan { 0% { background-position: 0% 50%; } 100% { background-position: -2% 50%; } }
-        .integrated-hero::after { content: ""; position: absolute; top: 0; right: -10vw; width: 60vw; height: 100%; z-index: 2; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: 0% 50%; pointer-events: none; opacity: 0; transform: translateX(5vw); transition: opacity 2.5s var(--ease-cinematic), transform 2.5s var(--ease-cinematic); mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
+        .integrated-hero::after { content: ""; position: absolute; top: 0; right: -10vw; width: 60vw; height: 100%; z-index: 2; background-image: url('Assets/PCAT Mosaic.svg'); background-size: cover; background-position: 0% 50%; pointer-events: none; opacity: 0; transform: translateX(5vw); transition: opacity 2.5s var(--ease-cinematic), transform 2.5s var(--ease-cinematic); mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
         .loaded .integrated-hero::after { opacity: 0.12; transform: translateX(0); transition-delay: 1.2s; animation: slowPan 40s linear infinite alternate 3s; }
         
         .hero-content { z-index: 10; width: 100%; padding-bottom: var(--space-lg); position: relative; }
@@ -301,7 +301,7 @@
             color: var(--mineral-white); aspect-ratio: 1 / 1.4; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;
             box-shadow: 20px 30px 50px rgba(21, 8, 14, 0.2), -1px -1px 2px rgba(255,255,255,0.2); border-radius: 2px; position: relative; overflow: hidden;
         }
-        .mockup-report::after { content: ""; position: absolute; top: 0; right: -10%; width: 70%; height: 100%; background-image: url('assets/PCAT Mosaic.svg'); background-size: cover; background-position: left center; opacity: 0.15; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
+        .mockup-report::after { content: ""; position: absolute; top: 0; right: -10%; width: 70%; height: 100%; background-image: url('Assets/PCAT Mosaic.svg'); background-size: cover; background-position: left center; opacity: 0.15; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
         .report-top, .report-bottom { z-index: 2; }
         
         .mockup-tag {
@@ -339,7 +339,7 @@
 
     <div id="loader">
         <div id="init-sequence" class="init-sequence">
-            <img src="assets/PCAT White.svg" alt="PCAT" class="loader-logo" id="loader-logo">
+            <img src="Assets/PCAT White.svg" alt="PCAT" class="loader-logo" id="loader-logo">
             <div class="loader-text" id="loader-text">Initializing Folkmark Strategy Engine</div>
             <div class="loader-bar-container" id="loader-bar"><div class="loader-bar"></div></div>
         </div>
@@ -355,7 +355,7 @@
     </div>
 
     <header class="global-header hero-fade-in">
-        <img src="assets/PCAT White.svg" alt="Prosperity Catalyst Logo" class="brand-logo">
+        <img src="Assets/PCAT White.svg" alt="Prosperity Catalyst Logo" class="brand-logo">
         <div class="header-meta">
             <div class="header-meta-col">
                 <span style="color: var(--brand-accent);">Document Status</span>
@@ -651,15 +651,15 @@
             
             <div class="photo-grid reveal-stagger">
                 <div class="photo-item p-main stagger-item reveal-clip">
-                    <img src="assets/photos/WaxPour.webp" alt="Wax Pouring Haiti">
+                    <img src="Assets/Photos/WaxPour.webp" alt="Wax Pouring Haiti">
                     <div class="photo-caption">Operational Focus</div>
                 </div>
                 <div class="photo-item p-half-1 stagger-item reveal-clip">
-                    <img src="assets/photos/Murielle.jpeg" alt="Murielle">
+                    <img src="Assets/Photos/Murielle.jpeg" alt="Murielle">
                     <div class="photo-caption">Enterprise & Leadership</div>
                 </div>
                 <div class="photo-item p-half-2 stagger-item reveal-clip">
-                    <img src="assets/photos/Baharka-Camp-Crocheter.png" alt="Baharka Crocheter">
+                    <img src="Assets/Photos/Baharka-Camp-Crocheter.png" alt="Baharka Crocheter">
                     <div class="photo-caption">Artisan Skill</div>
                 </div>
             </div>
@@ -855,13 +855,13 @@
                     <div class="grid-2" style="margin-top: 3rem;">
                         <div>
                             <div class="logo-box clear-space-box" style="background: var(--mineral-white); border: 1px solid rgba(0,0,0,0.05); margin-bottom: 1rem;">
-                                <img src="assets/ProsperityCatalyst_logo-horizontal_format-1500w.png" alt="PCAT Full Color" style="height: auto; max-height: 50px; max-width: 80%;">
+                                <img src="Assets/ProsperityCatalyst_logo-horizontal_format-1500w.png" alt="PCAT Full Color" style="height: auto; max-height: 50px; max-width: 80%;">
                             </div>
                             <span class="label" style="font-size: 0.65rem;">Primary (Full Color)</span>
                         </div>
                         <div>
                             <div class="logo-box clear-space-box" style="background-color: var(--aubergine-black); border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem;">
-                                <img src="assets/PCAT White.svg" alt="PCAT White" style="height: 35px;">
+                                <img src="Assets/PCAT White.svg" alt="PCAT White" style="height: 35px;">
                             </div>
                             <span class="label" style="font-size: 0.65rem;">Secondary (Whiteout)</span>
                         </div>
@@ -892,7 +892,7 @@
             <div class="mockup-grid reveal-stagger">
                 <div class="mockup-card mockup-report stagger-item">
                     <div class="report-top">
-                        <img src="assets/PCAT White.svg" alt="Logo" style="height: 25px; margin-bottom: 4rem;">
+                        <img src="Assets/PCAT White.svg" alt="Logo" style="height: 25px; margin-bottom: 4rem;">
                         <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; margin-bottom: 0.5rem;">Annual Briefing</p>
                         <h3 class="brand-font" style="font-size: 2.5rem; line-height: 1;">Enterprise<br>& Resilience</h3>
                     </div>
@@ -903,7 +903,7 @@
 
                 <div class="mockup-card mockup-tag stagger-item">
                     <div class="tag-hole"></div>
-                    <img src="assets/ProsperityCatalyst_logo-horizontal_format-1500w.png" alt="Logo" style="height: 25px; margin: 1rem 0;">
+                    <img src="Assets/ProsperityCatalyst_logo-horizontal_format-1500w.png" alt="Logo" style="height: 25px; margin: 1rem 0;">
                     <div>
                         <h3 class="brand-font" style="font-size: 2rem; color: var(--brand-primary); margin-bottom: 0.5rem;">Haitian Vetiver</h3>
                         <p style="font-size: 0.8rem; color: var(--text-muted-dark);">Hand-poured by the artisan women of Port-au-Prince.</p>
@@ -914,7 +914,7 @@
                 </div>
 
                 <div class="mockup-card mockup-social stagger-item">
-                    <img src="assets/photos/Murielle.jpeg" alt="Background">
+                    <img src="Assets/Photos/Murielle.jpeg" alt="Background">
                     <div class="social-content">
                         <span class="label" style="color: var(--brand-accent); font-size: 0.6rem;">Field Update</span>
                         <h3 class="brand-font" style="font-size: 1.8rem; line-height: 1.1; margin-bottom: 0.5rem;">Skills to Income.</h3>
