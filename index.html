@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prosperity Catalyst | Strategic Brand Framework</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Local Brand Font: URW Classico */
         @font-face { font-family: 'URW Classico'; src: url('Fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -18,20 +18,20 @@
             /* Brand Palette */
             --brand-primary: #821645;
             --brand-primary-dark: #580E2E;
-            --brand-accent: #FA9E29; 
+            --brand-accent: #FA9E29;
             --brand-accent-hover: #E0891F;
-            
+
             /* Derived Neutrals */
-            --mineral-white: #FCFBF7; 
-            --blush-ivory: #F6EEE5; 
-            --aubergine-black: #1A0911; 
-            --wine-surface: #2E121E; 
+            --mineral-white: #FCFBF7;
+            --blush-ivory: #F6EEE5;
+            --aubergine-black: #1A0911;
+            --wine-surface: #2E121E;
             --text-muted-dark: #A5929A;
 
             /* Motion Constants */
             --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-            
+
             /* Fluid Spacing System */
             --space-xs: clamp(0.75rem, 1.5vw, 1.5rem);
             --space-sm: clamp(1.5rem, 3vw, 3rem);
@@ -65,23 +65,23 @@
         }
         .loader-logo { height: clamp(80px, 20vw, 160px); margin-bottom: 2.5rem; opacity: 0.95; transition: transform 1.1s var(--ease-cinematic); animation: pulseText 2s infinite alternate var(--ease-cinematic); }
         .loader-logo.shrunk { transform: scale(0.6); margin-bottom: clamp(1.5rem, 4vh, 3rem); animation: none; }
-        
+
         .init-sequence { display: flex; flex-direction: column; align-items: center; transition: opacity 0.6s ease; }
         .loader-text { color: var(--mineral-white); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 500; opacity: 0.6; animation: pulseText 1.5s infinite alternate var(--ease-cinematic); }
         .loader-bar-container { width: 220px; height: 1px; background: rgba(255,255,255,0.1); margin-top: 1.5rem; overflow: hidden; position: relative; }
         .loader-bar { width: 100%; height: 100%; background: var(--brand-accent); transform: translateX(-100%); animation: loadProgress 1.5s var(--ease-out-expo) forwards; }
-        
+
         .auth-sequence { display: none; opacity: 0; flex-direction: column; align-items: center; transform: translateY(20px); transition: all 0.8s var(--ease-cinematic); }
         .auth-input-group { position: relative; margin: 1.5rem 0; width: 280px; }
         .auth-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0.75rem 0; color: var(--mineral-white); font-family: 'Inter', sans-serif; font-size: 1rem; text-align: center; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease; letter-spacing: 0.2em; }
         .auth-input::placeholder { color: rgba(255,255,255,0.3); font-weight: 300; letter-spacing: 0.1em; }
         .auth-input:focus { border-bottom-color: var(--brand-accent); box-shadow: 0 1px 0 0 var(--brand-accent); }
         .auth-error { color: #ff4d4d; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; position: absolute; bottom: -20px; left: 0; width: 100%; text-align: center; opacity: 0; transition: opacity 0.3s ease; }
-        
+
         @keyframes pulseText { 0% { opacity: 0.3; } 100% { opacity: 0.9; } }
         @keyframes loadProgress { 100% { transform: translateX(0); } }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
-        
+
         .shake { animation: shake 0.4s var(--ease-cinematic); }
         .loaded #loader { transform: translateY(-100%); pointer-events: none; transition-delay: 0.4s; }
 
@@ -89,7 +89,7 @@
         h2, h3, h4 { font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
         h1, .brand-font { font-family: 'URW Classico', serif; font-weight: 400; line-height: 1.05; }
         .brand-font-italic { font-family: 'URW Classico', serif; font-weight: 400; font-style: italic; }
-        
+
         h1 { font-size: clamp(4rem, 9vw, 9.5rem); letter-spacing: -0.01em; }
         h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
         p { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; font-weight: 300; max-width: 65ch; }
@@ -122,7 +122,7 @@
         .theme-white { background: var(--mineral-white); color: var(--aubergine-black); }
         .theme-offwhite { background: var(--blush-ivory); color: var(--aubergine-black); }
         .theme-dark { background: var(--aubergine-black); color: var(--mineral-white); }
-        
+
         /* Interstitial Chapter Breaks */
         .chapter-break, .integrated-hero {
             background: radial-gradient(circle at 50% 0%, #9B1D56 0%, var(--brand-primary) 50%, #560e2d 100%);
@@ -140,7 +140,7 @@
         @keyframes slowPan { 0% { background-position: 0% 50%; } 100% { background-position: -2% 50%; } }
         .integrated-hero::after { content: ""; position: absolute; top: 0; right: -10vw; width: 60vw; height: 100%; z-index: 2; background-image: url('Assets/PCAT Mosaic.svg'); background-size: cover; background-position: 0% 50%; pointer-events: none; opacity: 0; transform: translateX(5vw); transition: opacity 2.5s var(--ease-cinematic), transform 2.5s var(--ease-cinematic); mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
         .loaded .integrated-hero::after { opacity: 0.12; transform: translateX(0); transition-delay: 1.2s; animation: slowPan 40s linear infinite alternate 3s; }
-        
+
         .hero-content { z-index: 10; width: 100%; padding-bottom: var(--space-lg); position: relative; }
         .hero-content h1 { line-height: 0.95; margin: 0; display: flex; flex-direction: column; }
         .hero-text-mask { overflow: hidden; display: block; padding: 0.2em 0.1em; margin: -0.2em -0.1em; }
@@ -149,7 +149,7 @@
         .hero-bottom { z-index: 10; display: grid; grid-template-columns: 1fr; gap: var(--space-md); align-items: start; border-top: 1px solid rgba(255,255,255,0.15); padding-top: var(--space-sm); width: 100%; position: relative; }
         @media(min-width: 1024px) { .hero-bottom { grid-template-columns: 1fr 2fr; gap: var(--space-lg); } }
         .hero-bottom-left { max-width: 45ch; font-size: 0.95rem; font-weight: 300; opacity: 0.9; line-height: 1.6; }
-        
+
         .toc-list { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1rem 3rem; list-style: decimal-leading-zero; font-size: 0.85rem; margin: 0; padding-left: 1.5rem; }
         @media(min-width: 600px) { .toc-list { grid-template-columns: repeat(2, 1fr); } }
         .toc-list li { position: relative; font-weight: 400; padding-left: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 0.5rem; }
@@ -200,14 +200,14 @@
         .value-card, .persona-card {
             background: var(--mineral-white); padding: var(--space-md) var(--space-sm); border: 1px solid rgba(0,0,0,0.05);
             display: flex; flex-direction: column; height: 100%; transition: transform 0.4s var(--ease-cinematic), box-shadow 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02); opacity: 0; transform: translateY(40px) scale(0.98); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02); opacity: 0; transform: translateY(40px) scale(0.98);
         }
         .value-card.active, .persona-card.active { opacity: 1; transform: translateY(0) scale(1); }
         .value-card:hover, .persona-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
-        
+
         .value-card { border-top: 3px solid var(--brand-primary); gap: 1rem; }
         .value-card .step { font-family: 'URW Classico', serif; font-size: 2.5rem; color: var(--brand-primary); line-height: 1; }
-        
+
         .persona-card { border-top: 3px solid var(--brand-accent); gap: 1.5rem; }
         .persona-header h4 { font-family: 'URW Classico', serif; font-size: 2rem; color: var(--brand-primary); line-height: 1.1; margin-bottom: 0.5rem; }
         .persona-desc { font-size: 0.95rem; font-weight: 300; line-height: 1.5; color: var(--text-muted-dark); }
@@ -224,12 +224,12 @@
         .photo-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%) contrast(105%); transition: transform 1.5s var(--ease-cinematic), filter 1s var(--ease-cinematic); }
         .photo-item:hover img { transform: scale(1.03); filter: grayscale(0%) contrast(100%); }
         .photo-caption { position: absolute; bottom: 1.5rem; left: 1.5rem; color: white; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 10; }
-        
+
         .p-main { grid-column: span 12; height: 50vh; }
         .p-half-1 { grid-column: span 12; height: 40vh; }
         .p-half-2 { grid-column: span 12; height: 40vh; }
         @media(min-width: 900px) { .p-main { height: 75vh; } .p-half-1 { grid-column: span 7; height: 50vh; } .p-half-2 { grid-column: span 5; height: 50vh; } }
-        
+
         .reveal-clip { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transition: clip-path 1.6s var(--ease-cinematic), transform 1.6s var(--ease-cinematic); }
         .reveal-clip.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: var(--space-md); border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
@@ -242,7 +242,7 @@
         .typo-spec { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--text-muted-dark); }
         .spec-pill { display: inline-block; font-family: monospace; background: rgba(0,0,0,0.05); padding: 0.3rem 0.6rem; border-radius: 2px; color: var(--aubergine-black); margin-bottom: 0.5rem; }
         .spec-details { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1rem; }
-        
+
         .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
         .color-card { aspect-ratio: 1; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; border-radius: 2px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: transform 0.4s ease, box-shadow 0.4s ease; opacity: 0; transform: translateY(40px) scale(0.98); }
         .color-card.active { opacity: 1; transform: translateY(0) scale(1); }
@@ -265,7 +265,7 @@
         .btn-solid-accent:hover { background: var(--brand-accent-hover); border-color: var(--brand-accent-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(250, 158, 41, 0.2); }
         .btn-outline { background: transparent; color: var(--mineral-white); border-color: rgba(255,255,255,0.3); }
         .btn-outline:hover { background: var(--mineral-white); color: var(--aubergine-black); border-color: var(--mineral-white); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        
+
         .ui-forms { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 600px; }
         @media(min-width: 600px) { .ui-forms { grid-template-columns: 1fr 1fr; } }
         .form-group { display: flex; flex-direction: column; position: relative; }
@@ -273,7 +273,7 @@
         .form-input { width: 100%; border: none; border-bottom: 1px solid rgba(0,0,0,0.2); background: transparent; padding: 0.75rem 0; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--aubergine-black); transition: border-color 0.3s ease, box-shadow 0.3s ease; border-radius: 0; outline: none; }
         .form-input::placeholder { color: rgba(0,0,0,0.2); font-weight: 300; }
         .form-input:focus { border-bottom-color: var(--brand-primary); box-shadow: 0 1px 0 0 var(--brand-primary); }
-        
+
         .grid-visualizer { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0.5rem; margin-top: 2rem; height: 120px; }
         @media(min-width: 600px) { .grid-visualizer { gap: 1rem; } }
         .grid-col { background: rgba(130, 22, 69, 0.08); border: 1px solid rgba(130, 22, 69, 0.15); border-radius: 2px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.5rem; font-size: 0.7rem; font-family: monospace; color: var(--brand-primary); }
@@ -291,11 +291,11 @@
         .mockup-showcase { padding: var(--space-xl) 0; background: var(--blush-ivory); }
         .mockup-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); align-items: center; margin-top: var(--space-md); }
         @media(min-width: 1024px) { .mockup-grid { grid-template-columns: repeat(3, 1fr); } }
-        
+
         .mockup-card { transition: transform 0.6s var(--ease-cinematic), box-shadow 0.6s var(--ease-cinematic); cursor: default; opacity: 0; transform: translateY(40px) scale(0.98); }
         .mockup-card.active { opacity: 1; transform: translateY(0) scale(1); }
         .mockup-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
-        
+
         .mockup-report {
             background: radial-gradient(circle at top right, var(--brand-primary-dark) 0%, var(--brand-primary) 100%);
             color: var(--mineral-white); aspect-ratio: 1 / 1.4; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;
@@ -303,14 +303,14 @@
         }
         .mockup-report::after { content: ""; position: absolute; top: 0; right: -10%; width: 70%; height: 100%; background-image: url('Assets/PCAT Mosaic.svg'); background-size: cover; background-position: left center; opacity: 0.15; pointer-events: none; mask-image: linear-gradient(to right, transparent, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, black 60%); }
         .report-top, .report-bottom { z-index: 2; }
-        
+
         .mockup-tag {
             background: var(--mineral-white); color: var(--aubergine-black); aspect-ratio: 1 / 1.3;
             padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-top: 4px solid var(--brand-accent); border-radius: 2px; position: relative;
         }
         .tag-hole { width: 12px; height: 12px; background: var(--blush-ivory); border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1rem; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1); }
-        
+
         .mockup-social {
             aspect-ratio: 1 / 1; position: relative; overflow: hidden; border-radius: 2px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
@@ -343,7 +343,7 @@
             <div class="loader-text" id="loader-text">Initializing Folkmark Strategy Engine</div>
             <div class="loader-bar-container" id="loader-bar"><div class="loader-bar"></div></div>
         </div>
-        
+
         <div id="auth-sequence" class="auth-sequence">
             <span class="label" style="color: var(--brand-accent); letter-spacing: 0.2em;">Secured Artifact</span>
             <div class="auth-input-group">
@@ -375,19 +375,21 @@
                 <span class="hero-text-mask"><span class="hero-text-line">Messaging & Identity.</span></span>
             </h1>
         </div>
-        
+
         <div class="hero-bottom hero-fade-in">
             <div class="hero-bottom-left">
-                An executive framework to give Prosperity Catalyst a clearer, stronger, and more trustworthy public voice—equipping leadership to coordinate storytelling and secure institutional trust.
+                A brand refresh and strategic repositioning for Prosperity Catalyst—examining where the original model fell short, and charting a clearer path toward women's sustained economic agency, market participation, and commercial power.
             </div>
-            
+
             <ol class="toc-list">
+                <li><a href="#why-model">Why the Model Must Evolve</a></li>
                 <li><a href="#chapter-foundation">The Strategic Foundation</a></li>
+                <li><a href="#what-changes">What Changes Now</a></li>
                 <li><a href="#chapter-messaging">Messaging Architecture</a></li>
-                <li><a href="#chapter-audiences">Audience Personas</a></li>
+                <li><a href="#chapter-audiences">Audience Architecture</a></li>
                 <li><a href="#chapter-visual">Visual Style</a></li>
                 <li><a href="#chapter-system">The Design System</a></li>
-                <li><a href="#chapter-applications">Brand Applications</a></li>
+                <li><a href="#what-enables">What This Enables</a></li>
             </ol>
         </div>
     </section>
@@ -401,10 +403,33 @@
                     <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 300;">This is the center of gravity. Everything else in this system should reinforce, clarify, or demonstrate this idea—never compete with it.</p>
                 </div>
                 <div class="reveal context-right">
-                    <span class="label" style="color: var(--brand-accent);">The 2025 Reality</span>
-                    <p>Prosperity Catalyst is re-emerging after a roughly two-year operational hiatus. This document is not only a brand framework — it is partly a diagnosis of what reactivation requires: where the organization stands, what needs to be rebuilt, and what conditions must be in place before the brand can be activated at full strength.</p>
-                    <p>As a new presidential administration takes office, the global development sector faces anticipated volatility and contracting institutional capital. Simultaneously, Prosperity Catalyst requires urgent reinvestment in Fundraising & Development, alongside the critical expansion of our export, import, and retail supply chains.</p>
-                    <p>This brand refresh is the strategic foundation for that pivot. It equips leadership to project undeniable stability, defend existing funding, and confidently open new market channels.</p>
+                    <span class="label" style="color: var(--brand-accent);">The 2024 Reality</span>
+                    <p>Prosperity Catalyst is re-emerging after a roughly two-year operational hiatus. This document is not only a brand framework—it is partly a diagnosis of what reactivation requires: where the organization stands, what needs to be rebuilt, and what conditions must be in place before the brand can be activated at full strength.</p>
+                    <p>Global trade conditions are also shifting. Rising tariffs, supply chain restructuring, and the contraction of institutional capital are not abstract headwinds—they directly affect the viability of the model PCAT has historically operated. This document names that plainly. The question is not only how to secure more funding. It is how to redesign the model so that it transfers more economic power to the women it serves.</p>
+                    <p>This brand refresh is the strategic foundation for that work. It equips leadership to articulate a coherent direction, build institutional trust, and speak with precision to the buyers, partners, and supporters capable of unlocking real market access for women in Haiti and Iraq.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Why the Model Must Evolve -->
+    <section id="why-model" class="context-section text-lift" style="background: radial-gradient(circle at 50% 100%, var(--wine-surface) 0%, var(--aubergine-black) 100%); padding-top: 0;">
+        <div class="container">
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: var(--space-xl);">
+                <div class="context-grid">
+                    <div class="reveal" style="padding-bottom: 2rem;">
+                        <span class="label" style="color: var(--brand-accent);">Strategic Diagnosis</span>
+                        <h2 class="brand-font" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; color: var(--mineral-white);">The original model had real structural limits.</h2>
+                        <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.7); font-size: 1.05rem; font-weight: 300;">Prosperity Catalyst operated historically as a buyer, importer, and retailer. It purchased goods from women producers in Haiti and Iraq, managed export and import logistics, and depended on retail and direct-to-consumer sales to recoup costs. That structure created capital strain, operational fragility, and hard ceilings on scale.</p>
+                        <p style="margin-top: 1rem; color: rgba(255,255,255,0.7); font-size: 1.05rem; font-weight: 300;">Those were real problems. But they were not the primary problem.</p>
+                    </div>
+                    <div class="reveal context-right">
+                        <span class="label" style="color: var(--brand-accent);">The Deeper Issue</span>
+                        <p>The more fundamental issue is what the model failed to transfer: commercial agency.</p>
+                        <p>Women were producers. They made things. But they were not positioned as full market participants. They did not hold buyer relationships. They did not build knowledge of how global trade works—how pricing is negotiated, how quality standards translate to contracts, how to navigate import and export requirements. They did not accumulate the trade literacy and commercial standing that creates durable economic independence.</p>
+                        <p style="font-style: italic; border-left: 2px solid var(--brand-accent); padding-left: 1.5rem; margin: 1.5rem 0; color: rgba(255,255,255,0.9);">The products were never the end goal—they were proof of capability.</p>
+                        <p>A model that treats production as the endpoint—rather than as evidence of what women can supply directly to global markets—underserves the women it intends to support. That is the diagnosis this repositioning addresses.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -435,17 +460,17 @@
             <div class="core-content">
                 <div id="block-purpose" class="core-block reveal observer-block" data-nav="nav-heart">
                     <h3>01. Purpose & Values</h3>
-                    <p class="editorial-lead">To expand economic possibility for women in places where opportunity has been constrained by instability, exclusion, and lack of access.</p>
-                    <p>We envision a world where women in fragile environments are recognized as builders of households, markets, and long-term resilience.</p>
-                    
+                    <p class="editorial-lead">To expand economic possibility for women in places where opportunity has been constrained by instability, exclusion, and lack of market access.</p>
+                    <p>We envision a world where women in fragile environments are recognized as enterprise actors—builders of households, markets, and long-term commercial resilience.</p>
+
                     <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem;">
                         <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
                             <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Dignity</h5>
-                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Women are seen and supported as builders—never reduced to symbols of need.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Women are seen and supported as builders and economic actors—never reduced to symbols of need.</p>
                         </div>
                         <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
                             <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Practicality</h5>
-                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">The work is grounded in real pathways: skills, business support, investment, and opportunity.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">The work is grounded in real pathways: skills, business support, investment, market access, and trade knowledge.</p>
                         </div>
                         <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
                             <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Proximity</h5>
@@ -453,26 +478,60 @@
                         </div>
                         <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
                             <h5 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--aubergine-black);">Stewardship & Endurance</h5>
-                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Support is handled with care. The goal is lasting capacity and locally rooted strength.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Support is handled with care. The goal is lasting capacity, commercial standing, and locally rooted strength.</p>
                         </div>
                     </div>
                 </div>
 
                 <div id="block-positioning" class="core-block reveal observer-block" data-nav="nav-heart">
                     <h3>02. The Category</h3>
-                    <p class="editorial-lead">Women-led enterprise in fragile contexts.</p>
-                    <p>This is our lane. It avoids vague "empowerment" language, overly technical development jargon, and imported startup metaphors. It allows the organization to speak clearly about training, mentorship, income, market connection, and long-term resilience.</p>
-                    
-                    <p class="editorial-quote">Prosperity Catalyst is a women’s enterprise organization working in Haiti and Iraq. It pairs practical training with one-on-one mentorship, early investment, and community networks to help women build income, confidence, and longer-term stability.</p>
-                    
-                    <p>The work does not end at training. It is designed to support real economic participation.</p>
+                    <p class="editorial-lead">Women-led enterprise in fragile contexts—with direct market access.</p>
+                    <p>This is our lane. It avoids vague "empowerment" language, overly technical development jargon, and imported startup metaphors. It allows the organization to speak clearly about training, mentorship, income, market connection, trade access, and the long-term commercial agency that makes economic participation durable.</p>
+
+                    <p class="editorial-quote">Prosperity Catalyst is a women's enterprise organization working in Haiti and Iraq. It pairs practical training with one-on-one mentorship, early investment, and market connections to help women build income, commercial standing, and longer-term economic independence.</p>
+
+                    <p>The work does not end at production. It is designed to support real market participation—connecting women to buyers, building trade knowledge, and ensuring that the capability they demonstrate translates into relationships and income they own.</p>
                 </div>
 
                 <div id="block-value" class="core-block reveal observer-block" data-nav="nav-heart">
                     <h3>03. The Value Proposition</h3>
-                    <p class="editorial-lead">Prosperity Catalyst creates practical pathways for women in Haiti and Iraq to build income, stability, and independence.</p>
-                    <p>Through skills training, mentorship, early investment, and networks of support, we help women move from limited opportunity toward sustained economic participation. This is not abstract impact. It is grounded, human, and ongoing.</p>
+                    <p class="editorial-lead">Prosperity Catalyst creates practical pathways for women in Haiti and Iraq to participate directly in global markets—building income, commercial agency, and economic independence.</p>
+                    <p>Through skills training, mentorship, market connections, and trade knowledge, we help women move from production capacity toward market participation. The work is designed to transfer knowledge, relationships, and pricing power—not just income—to the women it serves. This is not abstract impact. It is grounded, human, and ongoing.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: What Changes Now -->
+    <section id="what-changes" class="theme-white">
+        <div class="container">
+            <div class="reveal" style="max-width: 65ch; margin-bottom: var(--space-md);">
+                <span class="label">The Strategic Shift</span>
+                <h2 class="brand-font" style="font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1; color: var(--brand-primary); margin-bottom: 1.5rem;">From operator to catalyst.</h2>
+                <p style="color: var(--text-muted-dark);">Prosperity Catalyst is not winding down its relationship with women producers in Haiti and Iraq. It is restructuring how that relationship is expressed—moving from acting as the primary buyer and retailer to acting as a market connector, capability builder, and system enabler. The goal is to move more power, knowledge, and commercial opportunity into the hands of the women this organization exists to serve.</p>
+            </div>
+            <div class="grid-2 reveal-stagger" style="margin-top: var(--space-md);">
+                <div class="stagger-item" style="border-top: 3px solid var(--brand-primary); padding-top: 2rem;">
+                    <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-primary); margin-bottom: 1.5rem; font-weight: 600;">What PCAT stops doing</h4>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Acting as primary buyer and importer of goods from women producers</li>
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Assuming inventory and capital risk as a core operating model</li>
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Treating retail and direct-to-consumer sales as the primary measure of impact</li>
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Managing export/import logistics as an internal operational function</li>
+                    </ul>
+                </div>
+                <div class="stagger-item" style="border-top: 3px solid var(--brand-accent); padding-top: 2rem;">
+                    <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-primary); margin-bottom: 1.5rem; font-weight: 600;">What PCAT does instead</h4>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Showcases production capacity and quality to importers and distributors in the U.S., Canada, and Europe</li>
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Connects women producers directly to buyers and facilitates those commercial relationships</li>
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Builds trade literacy: pricing, buyer relationships, quality standards, and contract negotiation</li>
+                        <li style="font-size: 0.95rem; color: var(--text-muted-dark); padding-left: 1.5rem; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span>Enables long-term commercial relationships that women hold, grow, and operate independently</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid rgba(0,0,0,0.08);">
+                <p style="font-size: 1.05rem; color: var(--text-muted-dark); font-weight: 300; max-width: 70ch;">This shift is reinforced by external conditions. Rising tariffs, supply chain restructuring, and buyer interest in verified producers from underrepresented markets create real commercial demand for what these women can supply. The opportunity is practical, not only principled.</p>
             </div>
         </div>
     </section>
@@ -503,18 +562,20 @@
                 <div id="block-voice" class="core-block reveal observer-block" data-nav="nav-messaging">
                     <h3>01. Warm. Clear. Grounded.</h3>
                     <p class="editorial-lead">Our tone is human, not sentimental.</p>
-                    <p>We show care without manipulation. We are economically literate, talking about work and income without turning people into abstractions. We are confident, never overclaiming.</p>
-                    
+                    <p>We show care without manipulation. We are economically literate, talking about work, market access, and income without turning people into abstractions. We are confident, never overclaiming. We speak about women as enterprise actors—not beneficiaries, not artisans in a static sense, but producers with demonstrated capacity and the right to participate directly in global markets.</p>
+
                     <div class="lexicon-box">
                         <div class="lexicon-grid">
                             <div class="lex-col use">
                                 <h5>Use these concepts</h5>
                                 <ul class="lex-list">
-                                    <li>Women-led enterprise</li>
-                                    <li>Economic futures</li>
-                                    <li>Skills, mentorship, support</li>
-                                    <li>Income and stability</li>
-                                    <li>Networks and connection</li>
+                                    <li>Women as economic actors</li>
+                                    <li>Market participation</li>
+                                    <li>Commercial agency</li>
+                                    <li>Trade knowledge and relationships</li>
+                                    <li>Demonstrating production capability</li>
+                                    <li>Sustained market participation</li>
+                                    <li>Income and economic independence</li>
                                     <li>Dignity & Resilience</li>
                                 </ul>
                             </div>
@@ -523,9 +584,11 @@
                                 <ul class="lex-list">
                                     <li>"Empowerment" as a catch-all</li>
                                     <li>"Beneficiaries" or "Vulnerable" as default</li>
-                                    <li>ROI-heavy financialized framing</li>
-                                    <li>Startup metaphors (venture studio)</li>
+                                    <li>"Artisans" as the primary frame</li>
+                                    <li>Selling products as the end goal</li>
+                                    <li>Impact through sales as the primary metric</li>
                                     <li>Pity-driven storytelling</li>
+                                    <li>Helping communities (vague)</li>
                                 </ul>
                             </div>
                         </div>
@@ -535,19 +598,19 @@
                 <div id="block-pillars" class="core-block reveal observer-block" data-nav="nav-messaging">
                     <h3>02. The Core Pillars</h3>
                     <p class="editorial-lead">These pillars ensure every piece of communication reinforces our central idea.</p>
-                    
+
                     <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 3rem;">
                         <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem;">
                             <h5 style="color: var(--brand-primary); font-size: 1.2rem; font-family: 'URW Classico', serif; margin-bottom: 0.5rem;">1. Women build more than income</h5>
-                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">When women gain the means to earn, the effects extend beyond the individual. Households stabilize. Decisions shift. Standing changes. This is not symbolic—it is practical and visible.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">When women gain the means to earn and participate in markets, the effects extend beyond the individual. Households stabilize. Decisions shift. Commercial standing changes. This is not symbolic—it is practical and visible. The measure of this work is not transactions; it is the transfer of economic agency.</p>
                         </div>
                         <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem;">
                             <h5 style="color: var(--brand-primary); font-size: 1.2rem; font-family: 'URW Classico', serif; margin-bottom: 0.5rem;">2. Opportunity must be practical</h5>
-                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Change starts with usable pathways. Skills that can be applied. Training that connects to income. Support that makes action possible. The outcome is participation, not mere completion.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Change starts with usable pathways. Skills that can be applied. Training that connects to market access. Support that makes action possible. The outcome is direct participation in commerce—not mere production, not mere completion of a training program.</p>
                         </div>
                         <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem;">
-                            <h5 style="color: var(--brand-primary); font-size: 1.2rem; font-family: 'URW Classico', serif; margin-bottom: 0.5rem;">3. Enterprise grows through networks</h5>
-                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Effort alone is not enough. Women need connection, access, visibility, and support systems. This is how enterprise becomes durable. We hold both economic and human realities together.</p>
+                            <h5 style="color: var(--brand-primary); font-size: 1.2rem; font-family: 'URW Classico', serif; margin-bottom: 0.5rem;">3. Enterprise grows through market connections</h5>
+                            <p style="font-size: 0.95rem; color: var(--text-muted-dark);">Effort alone is not enough. Women need direct connections to buyers, trade knowledge, pricing power, and the kind of commercial relationships that compound over time. This is how enterprise becomes durable. PCAT's role is to create and facilitate those connections—not to stand between women and the market.</p>
                         </div>
                     </div>
                 </div>
@@ -556,11 +619,11 @@
                     <h3>03. How the System Comes to Life</h3>
                     <p class="editorial-lead">Use these stories consistently to make the pillars real.</p>
                     <ul style="margin-top: 2rem; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5rem;">
-                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Enterprise story:</strong> A woman builds income through skill, support, and effort.</li>
-                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Household story:</strong> That income changes what is possible at home.</li>
-                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Network story:</strong> Relationships and support structures make progress possible.</li>
-                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Market story:</strong> Products and demand turn work into livelihood.</li>
-                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Long-view story:</strong> The goal is continuity, not one moment.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Enterprise story:</strong> A woman demonstrates production capability, connects to a buyer, and builds a commercial relationship she owns.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Household story:</strong> That income and commercial standing changes what is possible at home.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Network story:</strong> Buyer relationships, trade knowledge, and support structures make progress durable.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Market story:</strong> Production capacity meets real global demand—and women participate directly in that exchange.</li>
+                        <li style="font-size: 1.05rem; color: var(--text-muted-dark); padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--brand-accent);">—</span><strong>Long-view story:</strong> The goal is sustained market participation and commercial agency—not one transaction, not one season.</li>
                     </ul>
                 </div>
             </div>
@@ -573,57 +636,60 @@
         <div class="container reveal">
             <span class="label" style="color: var(--brand-accent);">Chapter III</span>
             <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">Audience Architecture</h2>
-            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">Who we speak to, and what they need to hear.</p>
+            <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 45ch; text-shadow: none;">Who this work centers, and who must be engaged to make it possible.</p>
         </div>
     </section>
 
     <section class="theme-offwhite">
         <div class="container">
             <div class="reveal" style="max-width: 65ch; margin-bottom: var(--space-md);">
-                <span class="label">Relational Dialogue</span>
-                <h2 class="brand-font" style="font-size: clamp(2.5rem, 4vw, 3rem); line-height: 1.1; color: var(--brand-primary); margin-bottom: 1.5rem;">To build a durable platform for partnership, the brand must speak with precision to the individuals capable of moving introductions, credibility, and opportunity.</h2>
-                <p style="color: var(--text-muted-dark);">These personas dictate our tone, our pacing, and our proof points.</p>
+                <span class="label">Who This Work Centers</span>
+                <h2 class="brand-font" style="font-size: clamp(2.5rem, 4vw, 3rem); line-height: 1.1; color: var(--brand-primary); margin-bottom: 1.5rem;">Women producers are not the backdrop. They are the point.</h2>
+                <p style="color: var(--text-muted-dark);">Every strategic decision, every external relationship, and every communication choice must be evaluated against one question: does this increase economic power, participation, and agency for women in Haiti and Iraq? Buyers, institutional partners, and connectors matter—but they matter because they are necessary to unlock greater opportunity for women. They are not the center of this work. The hierarchy below is not about importance to PCAT's operations. It is about who this work fundamentally exists to serve.</p>
             </div>
             <div class="grid-3 reveal-stagger">
-                <div class="persona-card stagger-item">
+                <div class="persona-card stagger-item" style="border-top-color: var(--brand-primary);">
                     <div class="persona-header">
-                        <h4>The Trusted Connector</h4>
-                        <p class="persona-desc">A well-networked supporter who can move introductions, credibility, and opportunity across civic, faith, diaspora, and professional circles.</p>
+                        <h4>Women Producers</h4>
+                        <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-accent); font-family: 'Inter', sans-serif; font-weight: 600; display: block; margin-bottom: 0.75rem;">Primary — Haiti &amp; Iraq</span>
+                        <p class="persona-desc">Skilled producers operating in fragile economic contexts who bring documented production capacity, craft expertise, and the ability to supply global markets—when given the access and commercial knowledge to do so. They are not beneficiaries. They are enterprise actors.</p>
                     </div>
                     <div class="persona-section">
-                        <h5>What the brand must signal</h5>
+                        <h5>What PCAT must deliver</h5>
                         <ul class="persona-list">
-                            <li>This organization is credible</li>
-                            <li>The work is human and dignified</li>
-                            <li>The story is portable</li>
+                            <li>Direct relationships with buyers and importers</li>
+                            <li>Trade knowledge: pricing, standards, negotiation</li>
+                            <li>Commercial standing as market participants, not producers-for-hire</li>
                         </ul>
                     </div>
                 </div>
                 <div class="persona-card stagger-item">
                     <div class="persona-header">
-                        <h4>The Major Supporter</h4>
-                        <p class="persona-desc">A high-capacity donor, family office principal, or senior patron looking for organizations that combine human seriousness with practical leverage.</p>
+                        <h4>Trade Partners &amp; Buyers</h4>
+                        <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-accent); font-family: 'Inter', sans-serif; font-weight: 600; display: block; margin-bottom: 0.75rem;">Secondary — Importers &amp; Distributors</span>
+                        <p class="persona-desc">Importers, distributors, and buyers in the U.S., Canada, and Europe seeking verified producers with demonstrated capacity, quality consistency, and reliable supply from underrepresented markets. They are necessary actors—not the center—in unlocking economic opportunity for women.</p>
                     </div>
                     <div class="persona-section">
                         <h5>What the brand must signal</h5>
                         <ul class="persona-list">
-                            <li>PCAT is not improvising</li>
-                            <li>We understand fragility without dramatizing it</li>
-                            <li>The brand is a strong platform for trust</li>
+                            <li>Production capability is real and documented</li>
+                            <li>Quality standards are consistent and verifiable</li>
+                            <li>PCAT is a credible connector and market facilitator</li>
                         </ul>
                     </div>
                 </div>
                 <div class="persona-card stagger-item">
                     <div class="persona-header">
-                        <h4>The Strategic Ally</h4>
-                        <p class="persona-desc">A partner, buyer, institutional contact, or informed mid-level supporter who can strengthen the organization’s ecosystem over time.</p>
+                        <h4>Institutional Partners</h4>
+                        <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-accent); font-family: 'Inter', sans-serif; font-weight: 600; display: block; margin-bottom: 0.75rem;">Tertiary — Connectors &amp; Funders</span>
+                        <p class="persona-desc">Donors, foundations, civic networks, and strategic allies whose resources and relationships strengthen PCAT's capacity to operate. They are drawn to organizations with coherent strategy, real-world grounding, and a clear line between institutional support and women's economic outcomes.</p>
                     </div>
                     <div class="persona-section">
                         <h5>What the brand must signal</h5>
                         <ul class="persona-list">
-                            <li>PCAT has a coherent public voice</li>
+                            <li>PCAT has a clear, credible strategic direction</li>
                             <li>The work is grounded in real economic participation</li>
-                            <li>This is a trust-and-opportunity story</li>
+                            <li>Resources translate into durable outcomes for women</li>
                         </ul>
                     </div>
                 </div>
@@ -646,9 +712,9 @@
             <div class="reveal">
                 <span class="label" style="color: var(--brand-accent);">01. Imagery Guidance</span>
                 <h2 class="brand-font text-lift" style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1.5rem; color: var(--mineral-white);">Dignity & Focus.</h2>
-                <p style="color: rgba(255,255,255,0.8); max-width: 60ch; font-weight: 300;">Our imagery should reflect capability, pride, focus, and real economic participation. We present women as makers, operators, leaders, and partners in enterprise. The goal of our photography is never pity, but profound respect and belief.</p>
+                <p style="color: rgba(255,255,255,0.8); max-width: 60ch; font-weight: 300;">Our imagery should reflect capability, precision, focus, and real economic participation. We present women as makers, operators, market participants, and commercial actors. The goal of our photography is never pity, never passive gratitude—but profound respect for the work being done and belief in the person doing it.</p>
             </div>
-            
+
             <div class="photo-grid reveal-stagger">
                 <div class="photo-item p-main stagger-item reveal-clip">
                     <img src="Assets/Photos/WaxPour.webp" alt="Wax Pouring Haiti">
@@ -660,13 +726,13 @@
                 </div>
                 <div class="photo-item p-half-2 stagger-item reveal-clip">
                     <img src="Assets/Photos/Baharka-Camp-Crocheter.png" alt="Baharka Crocheter">
-                    <div class="photo-caption">Artisan Skill</div>
+                    <div class="photo-caption">Production Capability</div>
                 </div>
             </div>
 
             <div class="reveal" style="margin-top: 8rem;">
                 <h3 class="brand-font" style="margin-bottom: 1rem; color: var(--brand-accent);">Voices of Agency</h3>
-                <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-weight: 300;">When utilizing video, select cuts where the subject discusses their craft, their business networks, and their personal command of the work. Avoid footage that isolates or diminishes the speaker.</p>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-weight: 300;">When utilizing video, select cuts where the subject discusses their craft, their business networks, and their personal command of the work. Avoid footage that isolates or diminishes the speaker. The subject should appear as someone building something—not someone being helped.</p>
                 <div class="video-container">
                     <iframe src="https://www.youtube-nocookie.com/embed/7vstPGdr3Lc?start=135&rel=0&modestbranding=1" title="Prosperity Catalyst Testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -699,12 +765,12 @@
             </div>
 
             <div class="core-content">
-                
+
                 <div id="ds-typo" class="core-block reveal observer-block" data-nav="nav-system">
                     <h3>01. Typographic Standards</h3>
                     <p class="editorial-lead">Typography is the primary vehicle for institutional authority.</p>
                     <p class="nasa-spec-rationale">The system employs a dual-typeface strategy to resolve the tension between heritage and modern utility. URW Classico operates as the display face, signaling stewardship and gravitas. Inter operates as the utility face, optimizing legibility and information density. Never alter tracking or leading outside defined parameters.</p>
-                    
+
                     <div class="typo-waterfall">
                         <div class="typo-row">
                             <div style="padding-bottom: 1rem;"><h1 style="margin: 0; line-height: 1;">Display One</h1></div>
@@ -761,7 +827,7 @@
                     <h3>02. Chromatic Architecture</h3>
                     <p class="editorial-lead">Color dictates mood and directs hierarchy.</p>
                     <p class="nasa-spec-rationale">The chromatic system rejects pure digital values (e.g., #000000, #FFFFFF) in favor of saturated, physical tones. Mineral White and Aubergine Black simulate the optical weight of premium print material, establishing a tactile, lived-in presence. Strict contrast pairings ensure accessibility without sacrificing the brand's quiet warmth.</p>
-                    
+
                     <div class="color-grid reveal-stagger">
                         <div class="color-card stagger-item pair-1">
                             <p class="huge-text">Aa</p>
@@ -798,7 +864,7 @@
                     <h3>03. Component Anatomy</h3>
                     <p class="editorial-lead">Digital interfaces must not obfuscate intent.</p>
                     <p class="nasa-spec-rationale">Digital components are constructed using a subtractive methodology. Containers are implied through spatial proximity rather than heavy borders. Button architecture relies on physical drop-shadows mapped to the button's specific hue, activating only on user interaction to signify dimensional depth and operational readiness.</p>
-                    
+
                     <div class="ui-showcase">
                         <div class="ui-group">
                             <span class="label">Action Architecture</span>
@@ -822,7 +888,7 @@
                                 </div>
                                 <div class="form-group" style="grid-column: 1 / -1;">
                                     <label class="form-label">Inquiry / Partnership Focus</label>
-                                    <input type="text" class="form-input" placeholder="How can we partner to expand networks?">
+                                    <input type="text" class="form-input" placeholder="How can we partner to expand market access?">
                                 </div>
                             </div>
                         </div>
@@ -833,13 +899,13 @@
                     <h3>04. Spatial Coordinate System</h3>
                     <p class="editorial-lead">A brand operating in fragile global regions must project stability.</p>
                     <p class="nasa-spec-rationale">Consistency is maintained through a rigid mathematical coordinate system. The layout is anchored by a maximum width of 1600px. The 12-column grid dictates horizontal alignment, while vertical rhythm is governed by a fluid clamp-based scale. This ensures the structural integrity of the layout remains absolute across all viewport permutations.</p>
-                    
+
                     <div class="grid-visualizer">
                         <div class="grid-col">1</div><div class="grid-col">2</div><div class="grid-col">3</div><div class="grid-col">4</div>
                         <div class="grid-col">5</div><div class="grid-col">6</div><div class="grid-col">7</div><div class="grid-col">8</div>
                         <div class="grid-col">9</div><div class="grid-col">10</div><div class="grid-col">11</div><div class="grid-col">12</div>
                     </div>
-                    
+
                     <div class="spacing-scale">
                         <div class="space-item"><div class="space-block" style="width: 20px; height: 20px;"></div><span class="spec-meta"><span>--space-xs</span></span></div>
                         <div class="space-item"><div class="space-block" style="width: 40px; height: 40px;"></div><span class="spec-meta"><span>--space-sm</span></span></div>
@@ -851,7 +917,7 @@
                     <h3>05. Identity Clear Space</h3>
                     <p class="editorial-lead">The indelible mark of Prosperity Catalyst.</p>
                     <p class="nasa-spec-rationale">The icon and logotype must remain isolated within a strictly defined clear space, free from typographic or graphic interference. The primary full-color mark is anchored on Mineral White; the secondary whiteout mark is reserved exclusively for Aubergine Black or photographic overlays with sufficient contrast.</p>
-                    
+
                     <div class="grid-2" style="margin-top: 3rem;">
                         <div>
                             <div class="logo-box clear-space-box" style="background: var(--mineral-white); border: 1px solid rgba(0,0,0,0.05); margin-bottom: 1rem;">
@@ -888,7 +954,7 @@
                 <span class="label">In Situ</span>
                 <h2>The System in Action.</h2>
             </div>
-            
+
             <div class="mockup-grid reveal-stagger">
                 <div class="mockup-card mockup-report stagger-item">
                     <div class="report-top">
@@ -906,7 +972,7 @@
                     <img src="Assets/ProsperityCatalyst_logo-horizontal_format-1500w.png" alt="Logo" style="height: 25px; margin: 1rem 0;">
                     <div>
                         <h3 class="brand-font" style="font-size: 2rem; color: var(--brand-primary); margin-bottom: 0.5rem;">Copper Artisan Hand-Poured Candle</h3>
-                        <p style="font-size: 0.8rem; color: var(--text-muted-dark);">Each hand-poured candle is made with a light natural rosemary scent and cotton wick, in a gorgeous hammered copper holder. Choose from a large or small candle, it comes in a colorful gift box and a small story card about the woman artisan who made it!</p>
+                        <p style="font-size: 0.8rem; color: var(--text-muted-dark);">Each hand-poured candle is made with a light natural rosemary scent and cotton wick, in a gorgeous hammered copper holder. Choose from a large or small candle, it comes in a colorful gift box and a small story card about the woman who made it.</p>
                     </div>
                     <div style="border-top: 1px solid rgba(0,0,0,0.1); width: 100%; padding-top: 1rem;">
                         <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--aubergine-black); font-weight: 600;">SKU: SK-187715</p>
@@ -917,10 +983,37 @@
                     <img src="Assets/Photos/Murielle.jpeg" alt="Background">
                     <div class="social-content">
                         <span class="label" style="color: var(--brand-accent); font-size: 0.6rem;">Field Update</span>
-                        <h3 class="brand-font" style="font-size: 1.8rem; line-height: 1.1; margin-bottom: 0.5rem;">Skills to Income.</h3>
-                        <p style="font-size: 0.8rem; font-weight: 300; opacity: 0.9; line-height: 1.4;">A woman builds her enterprise through practical training and local networks.</p>
+                        <h3 class="brand-font" style="font-size: 1.8rem; line-height: 1.1; margin-bottom: 0.5rem;">Production to Market.</h3>
+                        <p style="font-size: 0.8rem; font-weight: 300; opacity: 0.9; line-height: 1.4;">A woman demonstrates production capability and connects directly to international buyers.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: What This Enables -->
+    <section id="what-enables" class="context-section text-lift">
+        <div class="container">
+            <div class="reveal" style="max-width: 65ch; margin-bottom: var(--space-md);">
+                <span class="label" style="color: var(--brand-accent);">What This Enables</span>
+                <h2 class="brand-font" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; color: var(--mineral-white);">More reach. More durability. More agency in the hands of women.</h2>
+            </div>
+            <div class="grid-3 reveal-stagger" style="margin-top: var(--space-md);">
+                <div class="stagger-item" style="border-top: 2px solid rgba(255,255,255,0.15); padding-top: 2rem;">
+                    <h4 class="brand-font" style="font-size: 1.8rem; color: var(--mineral-white); margin-bottom: 1rem; line-height: 1.1;">Reduced Organizational Risk</h4>
+                    <p style="color: rgba(255,255,255,0.75); font-weight: 300;">PCAT no longer holds inventory risk or operates import/export logistics as a primary function. Capital is redeployed toward building producer relationships and buyer connections—not financing stock or absorbing the volatility of retail performance.</p>
+                </div>
+                <div class="stagger-item" style="border-top: 2px solid rgba(255,255,255,0.15); padding-top: 2rem;">
+                    <h4 class="brand-font" style="font-size: 1.8rem; color: var(--mineral-white); margin-bottom: 1rem; line-height: 1.1;">Greater Scale</h4>
+                    <p style="color: rgba(255,255,255,0.75); font-weight: 300;">A catalyst model is not limited by PCAT's own retail capacity. Relationships with importers and distributors multiply the market reach of women producers far beyond what direct-to-consumer sales could achieve—and they do so without PCAT absorbing the operational load.</p>
+                </div>
+                <div class="stagger-item" style="border-top: 2px solid var(--brand-accent); padding-top: 2rem;">
+                    <h4 class="brand-font" style="font-size: 1.8rem; color: var(--mineral-white); margin-bottom: 1rem; line-height: 1.1;">Durable Economic Agency</h4>
+                    <p style="color: rgba(255,255,255,0.75); font-weight: 300;">Women gain direct buyer relationships, trade knowledge, and pricing power—not just income from a single channel managed by someone else. This is the difference between economic participation and economic dependence. It is the reason the model change matters. All other outcomes follow from this one.</p>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--space-lg); padding-top: var(--space-sm); border-top: 1px solid rgba(255,255,255,0.08);">
+                <p style="color: rgba(255,255,255,0.6); font-size: 1.05rem; font-weight: 300; max-width: 70ch;">This repositioning also aligns with a shifting global trade environment. As supply chains restructure and buyers seek verified producers in underrepresented markets, the capability women in Haiti and Iraq have already demonstrated becomes a genuine commercial asset—provided the right connections and knowledge are in place to activate it.</p>
             </div>
         </div>
     </section>
@@ -932,7 +1025,7 @@
             <span class="label" style="color: var(--brand-accent);">Conclusion</span>
             <h2 class="brand-font" style="font-size: clamp(3rem, 6vw, 6rem);">A Living System</h2>
             <p style="margin: 1.5rem auto 0; font-size: 1.25rem; opacity: 0.9; max-width: 50ch; text-shadow: none; line-height: 1.6;">
-                This framework is not a static rulebook; it is a strategic instrument. It is designed to be wielded by every executive, partner, and advocate of Prosperity Catalyst. As we move into a shifting global landscape, our clarity is our greatest asset. Use this voice to command rooms. Use this architecture to project undeniable capability. The women at the center of our work are building the future—our brand must possess the strength to match them.
+                This framework is not a static rulebook—it is an instrument for the work that matters most. The women in Haiti and Iraq who produce with precision, adapt under pressure, and build enterprise in constrained environments are not waiting for support. They are waiting for access. Prosperity Catalyst exists to create that access: through market connections, trade knowledge, and the kind of commercial credibility that opens doors. Use this system to build that credibility. Use this voice to command rooms. Use this architecture to project undeniable capability. The goal is not a better brand—it is more economic power in the hands of women who have already proven what they can do.
             </p>
             <div style="margin-top: 3rem;">
                 <a href="#loader" class="btn btn-outline" style="border-color: var(--brand-accent); color: var(--mineral-white);">Return to Top</a>
@@ -945,7 +1038,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h5 class="brand-font">Prosperity Catalyst</h5>
-                    <p class="footer-meta" style="max-width: 30ch;">Helping women in Haiti and Iraq build economic futures through skills, investment, and networks of support.</p>
+                    <p class="footer-meta" style="max-width: 30ch;">Supporting women in Haiti and Iraq as enterprise actors—through market connections, trade knowledge, and the commercial relationships that create lasting economic independence.</p>
                 </div>
                 <div class="footer-col">
                     <div class="footer-meta">
@@ -972,13 +1065,13 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('init-sequence').style.display = 'none';
-                
+
                 const authSeq = document.getElementById('auth-sequence');
                 authSeq.style.display = 'flex';
                 void authSeq.offsetWidth; // trigger reflow
                 authSeq.style.opacity = '1';
                 authSeq.style.transform = 'translateY(0)';
-                
+
                 document.getElementById('loader-logo').classList.add('shrunk');
             }, 1600);
         });
@@ -1036,14 +1129,14 @@
                 }
             });
         }, revealOptions);
-        
+
         document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealOnScroll.observe(el));
 
         // Generic Sticky Scroll Spy Function
         function setupScrollSpy(navId) {
             const navItems = document.querySelectorAll(`#${navId} li`);
             const targets = Array.from(navItems).map(item => document.getElementById(item.getAttribute('data-target')));
-            
+
             const spyOptions = { root: null, rootMargin: "-20% 0px -70% 0px", threshold: 0 };
             const scrollSpy = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1055,7 +1148,7 @@
                     }
                 });
             }, spyOptions);
-            
+
             targets.forEach(block => {
                 if(block) scrollSpy.observe(block);
             });
