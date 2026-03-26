@@ -258,6 +258,7 @@
         .pair-4 { background-color: var(--blush-ivory); color: var(--aubergine-black); }
 
         .ui-showcase { background: var(--mineral-white); border: 1px solid rgba(0,0,0,0.05); padding: clamp(1.5rem, 4vw, 4rem); border-radius: 2px; margin-top: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.03); }
+        .ui-buttons { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 2rem; }
         .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2.5rem; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 2px; transition: all 0.4s var(--ease-cinematic); cursor: pointer; text-decoration: none; border: 1px solid transparent; }
         .btn-solid { background: var(--brand-primary); color: var(--mineral-white); border: 1px solid var(--brand-primary); }
         .btn-solid:hover { background: var(--brand-primary-dark); border-color: var(--brand-primary-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(88, 14, 46, 0.2); }
@@ -265,6 +266,9 @@
         .btn-solid-accent:hover { background: var(--brand-accent-hover); border-color: var(--brand-accent-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(250, 158, 41, 0.2); }
         .btn-outline { background: transparent; color: var(--mineral-white); border-color: rgba(255,255,255,0.3); }
         .btn-outline:hover { background: var(--mineral-white); color: var(--aubergine-black); border-color: var(--mineral-white); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        /* Outline button on light backgrounds */
+        .ui-showcase .btn-outline { color: var(--brand-primary); border-color: rgba(130,22,69,0.3); }
+        .ui-showcase .btn-outline:hover { background: var(--brand-primary); color: var(--mineral-white); border-color: var(--brand-primary); box-shadow: 0 10px 20px rgba(88,14,46,0.2); }
 
         .ui-forms { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 600px; }
         @media(min-width: 600px) { .ui-forms { grid-template-columns: 1fr 1fr; } }
@@ -280,6 +284,9 @@
         .spacing-scale { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
         .space-item { display: flex; align-items: center; gap: 2rem; }
         .space-block { background: var(--brand-primary); }
+        .spec-meta { font-family: monospace; font-size: 0.8rem; color: var(--text-muted-dark); letter-spacing: 0.05em; }
+        /* Second persona-section block — subtle divider */
+        .persona-section + .persona-section { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1.25rem; }
 
         .logo-box { display: flex; align-items: center; justify-content: center; height: 280px; border-radius: 2px; position: relative; overflow: hidden; }
         .logo-box.dark-bg { background-color: var(--aubergine-black); border: 1px solid rgba(255,255,255,0.1); }
@@ -645,7 +652,7 @@
             <div class="reveal" style="max-width: 65ch; margin-bottom: var(--space-md);">
                 <span class="label">Who This Work Centers</span>
                 <h2 class="brand-font" style="font-size: clamp(2.5rem, 4vw, 3rem); line-height: 1.1; color: var(--brand-primary); margin-bottom: 1.5rem;">Women producers are not the backdrop. They are the point.</h2>
-                <p style="color: var(--text-muted-dark);">Every strategic decision, every external relationship, and every communication choice must be evaluated against one question: does this increase economic power, participation, and agency for women in Haiti and Iraq? Buyers, institutional partners, and connectors matter—but they matter because they are necessary to unlock greater opportunity for women. They are not the center of this work. The hierarchy below is not about importance to PCAT's operations. It is about who this work fundamentally exists to serve.</p>
+                <p style="color: var(--text-muted-dark);">Every strategic decision, every external relationship, and every communication choice must be evaluated against one question: does this increase economic power, participation, and agency for women in Haiti and Iraq? Buyers, institutional partners, and connectors matter—but they matter because they are necessary to unlock greater opportunity for women. They are not the center of this work.</p>
             </div>
             <div class="grid-3 reveal-stagger">
                 <div class="persona-card stagger-item">
@@ -845,7 +852,7 @@
                 </div>
 
                 <div id="ds-color" class="core-block reveal observer-block" data-nav="nav-system">
-                    <h3>02. Chromatic Palette</h3>
+                    <h3>02. Chromatic Architecture</h3>
                     <p class="editorial-lead">Color dictates mood and directs hierarchy.</p>
                     <p class="nasa-spec-rationale">The chromatic system rejects pure digital values (e.g., #000000, #FFFFFF) in favor of saturated, physical tones. Mineral White and Aubergine Black simulate the optical weight of premium print material, establishing a tactile, lived-in presence. Strict contrast pairings ensure accessibility without sacrificing the brand's quiet warmth.</p>
 
@@ -853,29 +860,29 @@
                         <div class="color-card stagger-item pair-1">
                             <p class="huge-text">Aa</p>
                             <div class="color-card-footer">
-                                <div>Background<span>#FCFBF7</span></div>
-                                <div class="fg">Foreground<span>#821645</span></div>
+                                <div>Mineral White<span>#FCFBF7</span></div>
+                                <div class="fg">Brand Crimson<span>#821645</span></div>
                             </div>
                         </div>
                         <div class="color-card stagger-item pair-2">
                             <p class="huge-text">Aa</p>
                             <div class="color-card-footer">
-                                <div>Background<span>#1A0911</span></div>
-                                <div class="fg">Foreground<span>#FCFBF7</span></div>
+                                <div>Aubergine Black<span>#1A0911</span></div>
+                                <div class="fg">Mineral White<span>#FCFBF7</span></div>
                             </div>
                         </div>
                         <div class="color-card stagger-item pair-3">
                             <p class="huge-text">Aa</p>
                             <div class="color-card-footer">
-                                <div>Background<span>#821645</span></div>
-                                <div class="fg">Foreground<span>#FA9E29</span></div>
+                                <div>Brand Crimson<span>#821645</span></div>
+                                <div class="fg">Brand Amber<span>#FA9E29</span></div>
                             </div>
                         </div>
                         <div class="color-card stagger-item pair-4">
                             <p class="huge-text">Aa</p>
                             <div class="color-card-footer">
-                                <div>Background<span>#F6EEE5</span></div>
-                                <div class="fg">Foreground<span>#1A0911</span></div>
+                                <div>Blush Ivory<span>#F6EEE5</span></div>
+                                <div class="fg">Aubergine Black<span>#1A0911</span></div>
                             </div>
                         </div>
                     </div>
@@ -973,7 +980,7 @@
         <div class="container">
             <div class="reveal">
                 <span class="label">In Situ</span>
-                <h2>The System in Action.</h2>
+                <h2 class="brand-font">The System in Action.</h2>
             </div>
 
             <div class="mockup-grid reveal-stagger">
@@ -1022,15 +1029,15 @@
             <div class="grid-3 reveal-stagger" style="margin-top: var(--space-md);">
                 <div class="stagger-item" style="border-top: 2px solid rgba(255,255,255,0.15); padding-top: 2rem;">
                     <h4 class="brand-font" style="font-size: 1.8rem; color: var(--mineral-white); margin-bottom: 1rem; line-height: 1.1;">Reduced Organizational Risk</h4>
-                    <p style="color: rgba(255,255,255,0.75); font-weight: 300;">PCAT no longer holds inventory risk or operates import/export logistics as a primary function. Capital is redeployed toward building producer relationships and buyer connections—not financing stock or absorbing the volatility of retail performance.</p>
+                    <p style="color: rgba(255,255,255,0.75); font-weight: 300; max-width: none;">PCAT no longer holds inventory risk or operates import/export logistics as a primary function. Capital is redeployed toward building producer relationships and buyer connections—not financing stock or absorbing the volatility of retail performance.</p>
                 </div>
                 <div class="stagger-item" style="border-top: 2px solid rgba(255,255,255,0.15); padding-top: 2rem;">
                     <h4 class="brand-font" style="font-size: 1.8rem; color: var(--mineral-white); margin-bottom: 1rem; line-height: 1.1;">Greater Scale</h4>
-                    <p style="color: rgba(255,255,255,0.75); font-weight: 300;">A catalyst model is not limited by PCAT's own retail capacity. Relationships with importers and distributors multiply the market reach of women producers far beyond what direct-to-consumer sales could achieve—and they do so without PCAT absorbing the operational load.</p>
+                    <p style="color: rgba(255,255,255,0.75); font-weight: 300; max-width: none;">A catalyst model is not limited by PCAT's own retail capacity. Relationships with importers and distributors multiply the market reach of women producers far beyond what direct-to-consumer sales could achieve—and they do so without PCAT absorbing the operational load.</p>
                 </div>
                 <div class="stagger-item" style="border-top: 2px solid var(--brand-accent); padding-top: 2rem;">
                     <h4 class="brand-font" style="font-size: 1.8rem; color: var(--mineral-white); margin-bottom: 1rem; line-height: 1.1;">Durable Economic Agency</h4>
-                    <p style="color: rgba(255,255,255,0.75); font-weight: 300;">Women gain direct buyer relationships, trade knowledge, and pricing power—not just income from a single channel managed by someone else. This is the difference between economic participation and economic dependence. It is the reason the model change matters. All other outcomes follow from this one.</p>
+                    <p style="color: rgba(255,255,255,0.75); font-weight: 300; max-width: none;">Women gain direct buyer relationships, trade knowledge, and pricing power—not just income from a single channel managed by someone else. This is the difference between economic participation and economic dependence. It is why the model change matters.</p>
                 </div>
             </div>
             <div class="reveal" style="margin-top: var(--space-lg); padding-top: var(--space-sm); border-top: 1px solid rgba(255,255,255,0.08);">
