@@ -170,6 +170,9 @@
         .context-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start; }
         @media(min-width: 900px) { .context-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } .context-right { border-left: 1px solid rgba(255,255,255,0.15); padding-left: 4rem; } }
         .context-right p { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-weight: 300; }
+        /* Light-background override for the diagnostic section */
+        @media(min-width: 900px) { #why-model .context-right { border-left-color: rgba(0,0,0,0.1); } }
+        #why-model .context-right p { color: var(--text-muted-dark); }
 
         /* --- BRAND CORE STICKY SCROLL --- */
         .core-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); align-items: start; }
@@ -420,23 +423,21 @@
     </section>
 
     <!-- NEW SECTION: Why the Model Must Evolve -->
-    <section id="why-model" class="context-section text-lift" style="background: radial-gradient(circle at 50% 100%, var(--wine-surface) 0%, var(--aubergine-black) 100%); padding-top: 0;">
+    <section id="why-model" class="theme-offwhite">
         <div class="container">
-            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: var(--space-xl);">
-                <div class="context-grid">
-                    <div class="reveal" style="padding-bottom: 2rem;">
-                        <span class="label" style="color: var(--brand-accent);">Strategic Diagnosis</span>
-                        <h2 class="brand-font" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; color: var(--mineral-white);">The model had limits.</h2>
-                        <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.7); font-size: 1.05rem; font-weight: 300;">Prosperity Catalyst operated historically as a buyer, importer, and retailer. It purchased goods from women producers in Haiti and Iraq, managed export and import logistics, and depended on retail and direct-to-consumer sales to recoup costs. That structure created capital strain, operational fragility, and hard ceilings on scale.</p>
-                        <p style="margin-top: 1rem; color: rgba(255,255,255,0.7); font-size: 1.05rem; font-weight: 300;">Those were real problems. But they were not the primary problem.</p>
-                    </div>
-                    <div class="reveal context-right">
-                        <span class="label" style="color: var(--brand-accent);">The Deeper Issue</span>
-                        <p>The more fundamental issue is what the model failed to transfer: commercial agency.</p>
-                        <p>Women were producers. They made things. But they were not positioned as full market participants. They did not hold buyer relationships. They did not build knowledge of how global trade works—how pricing is negotiated, how quality standards translate to contracts, how to navigate import and export requirements. They did not accumulate the trade literacy and commercial standing that creates durable economic independence.</p>
-                        <p style="font-style: italic; border-left: 2px solid var(--brand-accent); padding-left: 1.5rem; margin: 1.5rem 0; color: rgba(255,255,255,0.9);">The products were never the end goal—they were proof of capability.</p>
-                        <p>A model that treats production as the endpoint—rather than as evidence of what women can supply directly to global markets—underserves the women it intends to support. That is what this document addresses.</p>
-                    </div>
+            <div class="context-grid">
+                <div class="reveal" style="padding-bottom: 2rem;">
+                    <span class="label" style="color: var(--brand-primary);">Strategic Diagnosis</span>
+                    <h2 class="brand-font" style="font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; color: var(--brand-primary);">The model had limits.</h2>
+                    <p style="margin-top: 1.5rem; color: var(--text-muted-dark); font-size: 1.05rem; font-weight: 300;">Prosperity Catalyst operated historically as a buyer, importer, and retailer. It purchased goods from women producers in Haiti and Iraq, managed export and import logistics, and depended on retail and direct-to-consumer sales to recoup costs. That structure created capital strain, operational fragility, and hard ceilings on scale.</p>
+                    <p style="margin-top: 1rem; color: var(--text-muted-dark); font-size: 1.05rem; font-weight: 300;">Those were real problems. But they were not the primary problem.</p>
+                </div>
+                <div class="reveal context-right">
+                    <span class="label" style="color: var(--brand-primary);">The Deeper Issue</span>
+                    <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-muted-dark); margin-bottom: 1.5rem; font-weight: 300;">The more fundamental issue is what the model failed to transfer: commercial agency.</p>
+                    <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-muted-dark); margin-bottom: 1.5rem; font-weight: 300;">Women were producers. They made things. But they were not positioned as full market participants. They did not hold buyer relationships. They did not build knowledge of how global trade works—how pricing is negotiated, how quality standards translate to contracts, how to navigate import and export requirements. They did not accumulate the trade literacy and commercial standing that creates durable economic independence.</p>
+                    <p style="font-style: italic; border-left: 2px solid var(--brand-accent); padding-left: 1.5rem; margin: 1.5rem 0; color: var(--aubergine-black);">The products were never the end goal—they were proof of capability.</p>
+                    <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-muted-dark); font-weight: 300;">A model that treats production as the endpoint—rather than as evidence of what women can supply directly to global markets—underserves the women it intends to support. That is what this document addresses.</p>
                 </div>
             </div>
         </div>
